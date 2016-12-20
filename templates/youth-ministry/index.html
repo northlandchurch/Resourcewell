@@ -1,0 +1,55 @@
+{embed="_includes/header" htmltitle="Youth Ministry"}
+{embed="_includes/nav" active="youth"}
+
+<div id="hero" class="container">
+    <div class="slider">
+        <div id="slide01" class="slide">
+            <div class="right">
+                <iframe src="http://player.vimeo.com/video/26811685?title=0&amp;byline=0&amp;portrait=0" width="500" height="281" frameborder="0"></iframe>
+            </div>
+		<p>Our hope is to help students develop a stronger relationship with Christ as they make their faith their own. These series have been created to provide a clear, easy outline for group meetings. Each lesson, complete with a leader's guide, includes a list of materials needed, opening activities, Bible engagement suggestions and interactive learning exercises. Adapt these materials in any way that is helpful for your family or ministry. It is our prayer that these studies will facilitate the development of healthy spiritual habits, as students read the Bible and see that it is applicable to their personal lives.</p><p>For some tips on how to get started, click on one of the following topics: &nbsp;&nbsp;<a href="http://www.resourcewell.org/_resources/children/Tips_for_Getting_Started_at_Church_in_Your_Home.pdf" style="color:white">Church in Your Home</a> &nbsp;&nbsp;<a href="http://www.resourcewell.org/_resources/children/Tips_for_Getting_Started_at_Sunday_School_.pdf "style="color:white">Sunday School</a> &nbsp;&nbsp;<a href="http://www.resourcewell.org/_resources/children/Tips_for_Getting_Started_at_Camp.pdf" style="color:white">Camp</a> &nbsp;&nbsp;<a href="http://www.resourcewell.org/_resources/children/Tips_for_Getting_Started_at_School.pdf" style="color:white">School</a></p>
+ 	</div>
+        <div class="clear"></div>
+    </div>
+</div>
+
+<div class="container mid">
+	<div class="w585 marg-t-20">
+		<?php $catcount = 1; ?>
+		{exp:channel:categories channel="childrenlesson" show_empty="no" style="linear" category_group="23"}
+		<div class="w250 marg-b-40">
+		    <h4 class="din"><a href="{youth-link}">{category_name}</a></h4>
+		    {if category_description}<p>{category_description}</p>{/if}
+		</div>
+		<?php
+		if ($catcount % 2 == 0 ) {
+		    echo "<div class='clear'>".$catcount."</div>";
+		}
+		++$catcount;
+		?>
+		{/exp:channel:categories}
+
+		<div class="w250 marg-b-40 nomargin">
+			<h4 class="din"><a href="http://www.resourcewell.org/discussions/youth-discussion">Discussions</a></h4>
+			<p>
+				{exp:channel:entries channel="discussion" url_title="youth-discussion"}
+					{discussion-descrip}
+				{/exp:channel:entries}
+			</p>
+		</div>
+		<?php
+		if ($catcount % 2 == 0 ) {
+		    echo "<div class='clear'>".$catcount."</div>";
+		}
+		++$catcount;
+		?>
+	</div>
+
+	<div id="sidebar" class="w315">
+		<br />
+	        {embed="_components/themission"}
+	</div>
+    <div class="clear"></div>
+</div>
+
+{embed="_includes/footer"}
