@@ -1,0 +1,60 @@
+{embed="_includes/header" htmltitle="Youth Ministry: High School"}
+{embed="_includes/nav" active="youth"}
+
+<div class="container mid">
+	<div id="subhead-curriculum">
+		<div class="breadcrumb">
+			You are here: &nbsp;<a href="/home">Home</a> &nbsp;/ Youth Ministries
+		</div>
+		<h1 class="din">Middle School Studies</h1>
+		<ul>
+			<li><a href="http://www.resourcewell.org/youth-ministry/">Overview</a></li>
+			<li class="active">Middle School Studies</li>
+<!-- 	 		<li><a href="http://www.resourcewell.org/youth-ministry/highschool/">High School Studies</a></li> -->
+<!--			<li><a href="http://www.resourcewell.org/discussions/youth-discussion/">Discussion</a></li>	-->
+		</ul>
+	</div>
+
+	<div class="w585 marg-t-20">
+		<h4 class="din-lrg">Middle School Curriculum</h4>
+		<p>These studies are designed to help middle school students engage with Scripture and develop the practices of prayer and Bible reading. The studies vary in length from 4 to 7 weeks. Each study consists of a leader's guide and a student book.</p>
+		<div class="clear marg-b-40"></div>
+
+		{exp:channel:entries 
+			channel="childrenlesson" category="336" 
+			dynamic="off" sort="asc" orderby="title"
+			disable="categories|member_data|pagination"
+		}
+		<div class="otherresource">
+			<h4 id="{url_title}">{title}</h4>
+			{lesson-descrip}
+
+			<p>
+			{lesson-docs limit="1"}<strong>Documents:</strong><br />{/lesson-docs}
+			{lesson-docs}{if files-newloc ==''}{exp:low_replace find="http://www.resourcewell.org/_resources/youth/" replace="http://resourcewell.s3.amazonaws.com/youth/"}<a href="{files-location}">{/exp:low_replace}{if:else}<a href="http://resourcewell.s3.amazonaws.com/youth/{files-newloc}">{/if}{exp:low_replace find="{filenaming}" multiple="yes"}{title}{/exp:low_replace}</a><br />{/lesson-docs}
+			</p>
+
+			<p>
+			{lesson-video limit="1"}<strong>Video:</strong><br /> {/lesson-video}
+			{lesson-video}{if files-newloc ==''}{exp:low_replace find="http://www.resourcewell.org/_resources/youth/" replace="http://resourcewell.s3.amazonaws.com/youth/"}<a href="{files-location}">{/exp:low_replace}{if:else}<a href="http://resourcewell.s3.amazonaws.com/youth/{files-newloc}">{/if}{exp:low_replace find="{filenaming}" multiple="yes"}{title}{/exp:low_replace}</a><br />{/lesson-video}
+			</p>
+
+			<p>
+			{lesson-audio limit="1"}<strong>Audio:</strong><br />{/lesson-audio}
+			{lesson-audio}{if files-newloc ==''}{exp:low_replace find="http://www.resourcewell.org/_resources/youth/" replace="http://resourcewell.s3.amazonaws.com/youth/"}<a href="{files-location}">{/exp:low_replace}{if:else}<a href="http://resourcewell.s3.amazonaws.com/youth/{files-newloc}">{/if}{exp:low_replace find="{filenaming}" multiple="yes"}{title}{/exp:low_replace}</a><br />{/lesson-audio}
+			</p>
+		</div>
+		{/exp:channel:entries}
+
+	</div>
+
+	<div id="sidebar" class="w315">
+		<br />
+		{embed="_components/themission"}
+		{embed="_components/newsletter"}
+
+	</div>
+	<div class="clear"></div>
+</div>
+
+{embed="_includes/footer"}
