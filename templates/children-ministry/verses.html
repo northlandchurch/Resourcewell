@@ -1,0 +1,121 @@
+{embed="_includes/header" htmltitle="Children&rsquo;s Ministry: Bible Memory Verses"}
+{embed="_includes/nav" active="children"}
+
+{if segment_3 == ""}
+	{exp:static_page_caching:automatic_cache}
+{/if}
+
+
+<div class="container mid">
+	<div id="subhead-curriculum">
+		<div class="breadcrumb">
+			You are here: &nbsp;<a href="/home">Home</a> &nbsp;/ Children's Ministry
+		</div>
+		<h1 class="din">Bible Memory Verse Songs</h1>
+		<ul>
+			<li><a href="http://www.resourcewell.org/children-ministry/">Overview</a></li>
+			<li><a href="http://www.resourcewell.org/children-ministry/curriculum/">Curriculum</a></li>
+			<li class="active">Bible Memory Verse Songs</li>
+			<li><a href="http://www.resourcewell.org/children-ministry/other/">Other Resources</a></li>
+			<li><a href="http://www.resourcewell.org/discussions/children-discussion/">Discussion</a></li>
+		</ul>
+	</div>
+
+	<div class="w585 marg-t-20">
+		<p>These original Bible Memory Verse Songs help children write God’s Word on their hearts forever. Songs, accompaniment tracks, sheet music, and music videos are available for free download and are featured in each unit of The Worship, The Word & The Way curriculum.</p>
+		<div class="clear marg-b-40"></div>
+
+        <script type="text/javascript">
+        $(document).ready(function() {
+            switches = $('ul.sub-tabs > li');
+            slides = $('#scopes > ul.scope');
+            switches.each(function(idx) {
+                $(this).data('slide', slides.eq(idx));
+            }).click(
+                function() {
+                switches.removeClass('active');
+                slides.removeClass('shown');             
+                $(this).addClass('active');  
+                $(this).data('slide').addClass('shown');
+		
+		$('#scopes > ul.scope > div').hide();
+		$('ul.scope[class="scope shown"] > li[class="head"]:first').nextUntil('li.head').show();
+		$('#scopes > ul.scope > div > li:not([class])').hide();
+		//$('#scopes > ul.shown > div > li[class="sub"]:first').nextUntil('li.head, li.sub').show();
+		$('ul.scope[class="scope shown"] > li[class="head"]:first').next('div').children('li').show();
+            });
+
+	    $('#scopes > ul.scope > div').hide();
+	    $('ul.scope[class="scope shown"] > li[class="head"]:first').nextUntil('li.head').show();
+
+	    $('#scopes > ul.scope > li.head').click(function (){
+	        $('#scopes > ul.scope > div').hide();    
+    	        $('#scopes > ul.scope > div > li:not([class])').hide();
+
+    	        $(this).nextUntil('#scopes > ul.scope > li.head').show();
+    		$(this).next('div').children('li').show();
+	    });
+
+	    $('ul.scope li a').click(function (){
+		$.get($(this).attr('href'),function(data) {
+			
+			create(data);
+		});
+		return false;
+	    });
+        });
+        </script>
+
+		<h5 class="din"><a href="/_assets/pdf/BibleMemoryVerseSongList.pdf" alt="Download Song List" target="_blank">Download Song List</a></h5><img src="/_assets/img/icon/downloadable.png">
+		<br>
+		<h5 class="din"><a href="http://www.resourcewell.org/children-ministry/all_verses" alt="View all lessons">View all songs</a></h5> <img src="/_assets/img/icon/link.png">
+	    <div class="sub-tab-wrap">
+			<ul class="sub-tabs">
+                {exp:channel:entries channel="childrenyear" sort="asc" order_by="title"}
+                <li class="{if count == '1'}active{/if}">{title}</li>
+                {/exp:channel:entries}
+			</ul>
+		</div>
+
+        <div id="scopes">
+            {exp:channel:entries channel="childrenyear" dynamic="off" sort="asc" order_by="title"}
+    		<ul class="scope<?php if ($catcount == 0) { echo ' shown'; } ?>">
+            	{year-units disable="member_data|pagination"}            		
+					{categories}
+						{if category_id == "424"}
+							<li class="unit_header">
+								{title}
+							</li>
+						{if:else}
+							<li class="head">
+								{title}
+								<div>
+									{unit-descrip}
+								</div>
+							</li>
+						{/if}
+					{/categories}
+					{if {unit-lessons:total_children} < 1}
+						<div>No Verses found for this unit</div>
+					{if:else}
+						{embed="children-ministry/_verses-loop" lesson-ids="{unit-lessons:entry_ids}"}
+					{/if}
+            	{/year-units}
+            	</ul>
+            <?php
+            ++$catcount;
+            ?>
+            {/exp:channel:entries}
+        </div>
+
+	</div>
+
+	<div id="sidebar" class="w315">
+		<br />
+		{embed="_components/themission"}
+        	{embed="_components/newsletter"}
+	</div>
+    <div class="clear"></div>
+</div>
+
+{embed="_includes/footer"}

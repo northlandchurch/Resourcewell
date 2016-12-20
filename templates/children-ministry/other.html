@@ -1,0 +1,56 @@
+{embed="_includes/header" htmltitle="Children&rsquo;s Ministry: Other Resources"}
+{embed="_includes/nav" active="children"}
+
+<div class="container mid">
+	<div id="subhead-curriculum">
+		<div class="breadcrumb">
+			You are here: &nbsp;<a href="/home">Home</a> &nbsp;/ Children's Ministry
+		</div>
+		<h1 class="din">Other Resources</h1>
+		<ul>
+			<li><a href="http://www.resourcewell.org/children-ministry/">Overview</a></li>
+			<li><a href="http://www.resourcewell.org/children-ministry/curriculum/">Curriculum</a></li>
+			<li><a href="http://www.resourcewell.org/children-ministry/verses/">Bible Memory Verse Songs</a></li>
+			<li class="active">Other Resources</a></li>
+			<li><a href="http://www.resourcewell.org/discussions/children-discussion/">Discussion</a></li>
+		</ul>
+	</div>
+
+	<div class="w585 marg-t-20">
+		<p>The resources here are designed to stand alone or supplement The Worship, The Word & The Way Children's Bible Curriculum. These resources are listed alphabetically for your convenience.</p>
+		<div class="clear marg-b-40"></div>
+
+		{exp:channel:entries channel="childrenlesson" category="331" dynamic="off" orderby="title" sort="asc" order_by="title"}
+		<div class="otherresource">
+			<h4>{title}</h4>
+			{lesson-descrip}
+			<p>
+			{lesson-docs limit="1"}<strong>Documents:</strong><br />{/lesson-docs}
+			{lesson-docs}{if files-newloc ==''}{exp:low_replace find="http://www.resourcewell.org/_resources/children/" replace="http://resourcewell.s3.amazonaws.com/children/"}<a href="{files-location}">{/exp:low_replace}{if:else}<a href="http://resourcewell.s3.amazonaws.com/children/{files-newloc}">{/if}{exp:low_replace find="{filenaming}" multiple="yes"}{title}{/exp:low_replace}</a><br />{/lesson-docs}
+			</p>
+
+			<p>
+			{lesson-video limit="1"}<strong>Video:</strong><br />{/lesson-video}
+			{lesson-video}{if files-newloc ==''}{exp:low_replace find="http://www.resourcewell.org/_resources/children/" replace="http://resourcewell.s3.amazonaws.com/children/"}<a href="{files-location}">{/exp:low_replace}{if:else}<a href="http://resourcewell.s3.amazonaws.com/children/{files-newloc}">{/if}{exp:low_replace find="{filenaming}" multiple="yes"}{title}{/exp:low_replace}</a><br />{/lesson-video}
+			</p>
+
+			<p>
+			{lesson-audio limit="1"}<strong>Audio:</strong><br />{/lesson-audio}
+			{lesson-audio}{if files-newloc ==''}{exp:low_replace find="http://www.resourcewell.org/_resources/children/" replace="http://resourcewell.s3.amazonaws.com/children/"}<a href="{files-location}">{/exp:low_replace}{if:else}<a href="http://resourcewell.s3.amazonaws.com/children/{files-newloc}">{/if}{exp:low_replace find="{filenaming}" multiple="yes"}{title}{/exp:low_replace}</a><br />{/lesson-audio}
+			</p>
+			
+		</div>
+		{/exp:channel:entries}
+
+	</div>
+
+	<div id="sidebar" class="w315">
+		<br />
+		{embed="_components/themission"}
+		{embed="_components/newsletter"}
+
+	</div>
+	<div class="clear"></div>
+</div>
+
+{embed="_includes/footer"}

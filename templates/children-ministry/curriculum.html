@@ -1,0 +1,130 @@
+{embed="_includes/header" htmltitle="Children&rsquo;s Ministry: The Word, The Worship, The Way"}
+{embed="_includes/nav" active="children"}
+
+{if segment_3 == ""}
+	{exp:static_page_caching:automatic_cache}
+{/if}
+
+<div class="container mid">
+	<div id="subhead-curriculum">
+		<div class="breadcrumb">
+			You are here: &nbsp;<a href="/home">Home</a> &nbsp;/ Children's Ministry
+		</div>
+		<h1 class="din">The Worship, The Word and The Way</h1>
+		<ul>
+			<li><a href="http://www.resourcewell.org/children-ministry/">Overview</a></li>
+			<li class="active">Curriculum</li>
+			<li><a href="http://www.resourcewell.org/children-ministry/verses/">Bible Memory Verse Songs</a></li>
+			<li><a href="http://www.resourcewell.org/children-ministry/other/">Other Resources</a></li>
+			<li><a href="http://www.resourcewell.org/discussions/children-discussion/">Discussion</a></li>
+		</ul>
+	</div>
+
+	<div class="w585 marg-t-20">
+        <p>A child who begins The Worship, The Word & The Way curriculum at two-years-old will explore Bible stories from Genesis to Revelation more than three times at five different age levels by the time he or she reaches 12 years old. Check out our different age groups (2-3, 4-5, 6-7, 8-9 & 10-12) as well as adapted lessons for children with disabilities.</p>
+		<div class="clear marg-b-40"></div>
+
+
+        <script type="text/javascript">
+        $(document).ready(function() {
+            switches = $('ul.sub-tabs > li');
+            slides = $('#scopes > ul.scope');
+            switches.each(function(idx) {
+                $(this).data('slide', slides.eq(idx));
+            }).click(
+                function() {
+                switches.removeClass('active');
+                slides.removeClass('shown');             
+                $(this).addClass('active');  
+                $(this).data('slide').addClass('shown');
+		
+		$('#scopes > ul.scope > div').hide();
+		$('ul.scope[class="scope shown"] > li[class="head"]:first').nextUntil('li.head').show();
+		$('#scopes > ul.scope > div > li:not([class])').hide();
+		$('#scopes > ul.shown > div > li[class="sub"]:first').nextUntil('li.head, li.sub').show();
+            });
+
+	    $('#scopes > ul.scope > div').hide();
+	    $('ul.scope[class="scope shown"] > li[class="head"]:first').nextUntil('li.head').show();
+
+	    $('#scopes > ul.scope > div > li:not([class])').hide();
+
+	    $('#scopes > ul.scope > div >li[class="sub"]:first').nextUntil('li.head, li.sub').show();
+
+	    $('#scopes > ul.scope > div > li.sub').click(function() {
+		$('#scopes > ul.scope > div > li:not([class])').hide();
+		$(this).nextUntil('li.head,li.sub').show();
+
+		return false;
+	    });
+
+	    $('#scopes > ul.scope > li.head').click(function (){
+	        $('#scopes > ul.scope > div').hide();    
+    	        $('#scopes > ul.scope > div > li:not([class])').hide();
+
+    	        $(this).nextUntil('#scopes > ul.scope > li.head').show();
+    		$(this).next('div').children('li[class="sub"]:first').nextUntil('li.head, li.sub').show();
+	    });
+        });
+        </script>
+
+		<h5 class="din"><a href="http://resourcewell.s3.amazonaws.com/children/otherresources/Scope&SequenceWorshipWordWay.pdf" alt="View all lessons">Download Scope &amp; Sequence</a></h5><img src="/_assets/img/icon/downloadable.png">
+		<br>
+		<h5 class="din"><a href="http://www.resourcewell.org/children-ministry/all_lessons" alt="View all lessons">View all lessons</a></h5> <img src="/_assets/img/icon/link.png">
+		
+		
+	    <div class="sub-tab-wrap">
+			<ul class="sub-tabs">
+                {exp:channel:entries channel="childrenyear" sort="asc" order_by="title" disable="categories|category_fields|member_data|custom_fields|pagination"}
+                <li class="{if count == '1'}active{/if}">{title}</li>
+                {/exp:channel:entries}
+			</ul>
+		</div>
+
+        <div id="scopes">
+			<?php $catcount=0; ?>
+            {exp:channel:entries channel="childrenyear" dynamic="no" sort="asc" order_by="title" disable="member_data|pagination"}
+    		<ul class="scope<?php if ($catcount == 0) { echo ' shown'; } ?>">
+				{year-units disable="member_data|pagination"}       		
+					{categories}
+						{if category_id == "424"}
+							<li class="unit_header">
+								{title}
+							</li>
+						{if:else}
+							<li class="head">
+								{title}
+								<div>
+									{unit-descrip}
+								</div>
+							</li>
+						{/if}
+					{/categories}
+					{if {unit-lessons:total_children} > 0}
+						<?php
+							$homepage = file_get_contents('http://www.resourcewell.org/children-ministry/_loop_lessons/entries/'.'{unit-lessons:entry_ids}');
+							echo $homepage;
+							?>
+					{if:else}
+						<div>No Lessons found for this unit</div>
+					{/if}
+					
+				{/year-units}
+            </ul>
+            <?php
+            ++$catcount;
+            ?>
+            {/exp:channel:entries}
+        </div>
+
+	</div>
+	
+	<div id="sidebar" class="w315">
+		<br />
+		{embed="_components/themission"}
+        	{embed="_components/newsletter"}
+	</div>
+    <div class="clear"></div>
+</div>
+
+{embed="_includes/footer"}
