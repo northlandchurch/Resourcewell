@@ -1,0 +1,24 @@
+<div id="header" class="container">
+    <div id="top" class="grid_full">
+        <a href="http://www.resourcewell.org/home/"><img src="{resourcewell-img}/main/logo.png" class="logo" /></a>
+		<!--
+        <div id="user">
+            <a href="#"><img src="{resourcewell-img}/button/fbconnect.png" class="fbconnect" /></a><a href="#" class="first">Login</a><a href="#" class="middle">New User</a>
+        </div>
+		-->
+    </div>
+    <div class="clear"></div>
+</div>
+
+<div id="nav" class="container">
+    <ul>
+        <li{if embed:active == 'children'} class="active"{/if}><a href="http://www.resourcewell.org/children-ministry">Children</a></li>
+        <li{if embed:active == 'youth'} class="active"{/if}><a href="http://www.resourcewell.org/youth-ministry">Youth</a></li>
+        <li{if embed:active == 'adult'} class="active"{/if}><a href="http://www.resourcewell.org/adult-ministry">Adult</a></li>
+        <li{if embed:active == 'churchinyourhome'} class="active"{/if}><a href="http://www.resourcewell.org/churchinyourhome">Church in Your Home</a></li>
+        <li id="browse"{if embed:active == 'browse'} class="active"{/if}><a href="http://www.resourcewell.org/browse">Search All Resources</a></li>
+        <li id="blog"{if embed:active == 'blog'} class="active"{/if}><a href="http://www.resourcewell.org/blog">Blog</a></li>
+        <li id="discussions"{if embed:active == 'discussions'} class="active"{/if}><a href="http://www.resourcewell.org/discussions">Discussions</a></li>
+        <li id="contact"{if embed:active == 'contact'} class="active"{/if}><a href="http://www.resourcewell.org/contact">Contact</a></li>
+    </ul>
+</div>

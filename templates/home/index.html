@@ -1,0 +1,108 @@
+{embed="_includes/header" htmltitle="Welcome!"}
+{embed="_includes/nav" active=""}
+{replace}
+
+<div id="welcome" class="container">
+    <div class="slider">
+        <div id="slide01" class="slide">
+            <div class="right">
+                <iframe src="http://player.vimeo.com/video/26965652?title=0&amp;byline=0&amp;portrait=0" width="500" height="281" frameborder="0"></iframe>
+            </div>
+            <h1>A meeting place and resource center offering free, quality resources to equip you<br>in your ministry.</h1>
+	    <br><br>
+            <a href="/about/"><img src="{resourcewell-img}/button/learn-more.png" class="marg-r-20" /></a>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+
+<div class="container mid">
+
+
+<?php $counter = 0; ?>
+{exp:channel:entries channel="childrenlesson" search:lesson-featured="not 0" orderby="lesson-featured" sort="asc" limit="4"}
+<?php if($counter ==0): ?>
+   <div id="featured" class="marg-b-40">
+        <div class="header">FEATURED LESSONS <span class="amp">&amp;</span> RESOURCES</div>
+		
+		{!-- 
+			STATIC FEATURED ELEMENT
+		<div class="grid_3">
+			<h4 class="featured">
+				<a href="https://resourcewell.typeform.com/to/O1E9Mc">We Need You! - ResourceWell.org Survey</a>
+			</h4>
+			<a href="https://resourcewell.typeform.com/to/O1E9Mc">
+				<img src="http://www.resourcewell.org/_assets/img/main/resource_well_survey.png" style="width: 200px;">
+			</a>
+			<div class="contains" style="margin: 7px 0 0 0;">
+				<p>
+				We are looking for the most effective ways we can serve children’s ministry advocates, leaders, and teachers.
+				Your participation in a 10-minute survey will help us prioritize improvements and new features on ResourceWell.org.
+				</p>
+			</div>
+		</div> --}
+<?php endif; $counter++; ?>
+
+    <div class="grid_3">
+		{categories parent_only="yes" limit="1" show="not 368|370|369|329|330|331"}
+		<h4 class="featured"><a href="{exp:low_replace find="index.php/"}
+			{if category_id==342}/children-ministry/lesson/{url_title}{/if}{if category_id==416}/adult-ministry/lesson/{url_title}{/if}
+			{if category_id==417}/churchinyourhome-ministry/lesson/{url_title}{/if}
+			{if category_id==343 OR category_id == '336' OR category_id == '337'}/youth-ministry/lesson/{url_title}{/if}
+			{if category_id==374}/churchinyourhome/other/{url_title}{/if}{/exp:low_replace}">{exp:low_replace find="2Lesson|3Lesson" replace="Lesson" multiple="yes"}{title}{/exp:low_replace}</a></h4>
+		{/categories}
+		<div class="contains">
+			<div class="head"> 
+			{if lesson-docs OR lesson-audio OR lesson-video}
+				Contains:
+				{if lesson-docs}<img src="{resourcewell-img}/icon/pdf.png" />{/if}
+				{if lesson-audio}<img src="{resourcewell-img}/icon/audio.png" />{/if}
+				{if lesson-video}<img src="{resourcewell-img}/icon/movie.png" />{/if}
+			{/if}
+			</div>
+			<p>{exp:word_limit total="30"}{exp:strip_html keep="p"}{lesson-descrip}{/exp:strip_html}{/exp:word_limit}</p>
+			<div class="category_view">
+				{categories parent_only="yes" limit="1" show="not 368|370|371|369|329|330|331"}
+					{if category_id == '342'}
+						Children's Ministry
+					{if:elseif category_id == '416'}
+						Adult Ministry
+					{if:elseif category_id == '343' OR category_id == '336' OR category_id == '337'}
+						Youth Ministry
+					{if:elseif category_id == '374'}
+						Church In Your Home
+					{/if}
+				{/categories}
+			</div>
+		</div>
+    </div>
+{/exp:channel:entries}
+<?php if($counter > 0): ?>
+        <div class="clear"></div>
+    </div>
+<?php else: ?>
+<div style="padding:10px; width: 100%;"></div>
+<?php endif; ?>
+
+    <div class="grid_10">
+        <h3>Latest Blog Posts</h3>
+
+	{exp:channel:entries channel="rw-blog" orderby="entry_date" sort="desc" limit="2"}
+	<div class="links">
+    		<h4 class="links"><a href="{exp:low_replace find="index.php/"}{url_title_path='blog/entry'}{/exp:low_replace}">{title}</a></h4>
+    		<div class="info">
+    		    <span class="script">by</span> <strong><a href="{exp:strip_html}{staff_bio_link}{/exp:strip_html}" target="_blank">{author}</a></strong> &nbsp;|&nbsp; {entry_date format="%F %j, %Y"}
+    		</div>
+            {exp:word_limit total="50"}{description}{/exp:word_limit}	</div>
+        {/exp:channel:entries}
+    </div>
+    <div class="grid_4">
+        {embed="_components/themission" margin="marg-b-20"}
+        {embed="_components/newsletter"}
+    </div>
+
+    <div class="clear"></div>
+
+</div>
+
+{embed="_includes/footer"}
