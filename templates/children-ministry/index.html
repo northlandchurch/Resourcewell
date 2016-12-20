@@ -1,0 +1,55 @@
+{embed="_includes/header" htmltitle="Children&rsquo;s Ministry"}
+{embed="_includes/nav" active="children"}
+
+<div id="hero" class="container">
+    <div class="slider">
+        <div id="slide01" class="slide">
+            <div class="right">
+               <iframe src="http://player.vimeo.com/video/25781936?title=0&amp;byline=0&amp;portrait=0" width="500" height="281" frameborder="0"></iframe>
+            </div>
+            <p>Our goal is to resource well those who teach children who God is and what He has done. All elements are adaptable to a variety of group sizes, ages, and cultures, in settings ranging from schools and Sunday schools, to home churches and camps. As you use these free materials, share your ideas and adaptations with us to make these resources more accessible to children's ministries throughout the world.</p>
+            <p>For some tips on how to get started, click on one of the following topics: &nbsp;&nbsp;<a href="http://www.resourcewell.org/_resources/children/Tips_for_Getting_Started_at_Church_in_Your_Home.pdf" style="color:white">Church in Your Home</a> &nbsp;&nbsp;<a href="http://www.resourcewell.org/_resources/children/Tips_for_Getting_Started_at_Sunday_School_.pdf" style="color:white">Sunday School</a> &nbsp;&nbsp;<a href="http://www.resourcewell.org/_resources/children/Tips_for_Getting_Started_at_Camp.pdf" style="color:white">Camp</a> &nbsp;&nbsp;<a href="http://www.resourcewell.org/_resources/children/Tips_for_Getting_Started_at_School.pdf" style="color:white">School</a></p>
+	</div>
+        <div class="clear"></div>
+    </div>
+</div>
+<div class="container mid">
+	<div class="w585 marg-t-20">
+        <?php $catcount = 1; ?>
+        {exp:channel:categories channel="childrenyear" show_empty="yes" style="linear" category_group="22"}
+        <div class="w250 marg-b-40">
+            <h4 class="din"><a href="{children-link}">{category_name}</a></h4>
+            {if category_description}<p>{category_description}</p>{/if}
+        </div>
+        <?php
+        if ($catcount % 2 == 0 ) {
+            echo "<div class='clear'>".$catcount."</div>";
+        }
+        ++$catcount;
+        ?>
+        {/exp:channel:categories}
+
+
+	<div class="w250 marg-b-40">
+		<h4 class="din"><a href="http://www.resourcewell.org/discussions/children-discussion/">Discussions</a></h4>
+		<p>
+			{exp:channel:entries channel="discussion" url_title="children-discussion"}
+				{discussion-descrip}
+			{/exp:channel:entries}
+		</p>
+	</div>
+	<?php
+	if ($catcount % 2 == 0 ) {
+	    echo "<div class='clear'>".$catcount."</div>";
+	}
+	++$catcount;
+	?>
+	</div>
+
+	<div id="sidebar" class="w315">
+		<br />
+	        {embed="_components/themission"}
+	</div>
+    <div class="clear"></div>
+</div>
+{embed="_includes/footer"}

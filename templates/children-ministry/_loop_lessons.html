@@ -1,0 +1,134 @@
+{!-- two sources: one uses embed and one uses file_get_contents. The diff requires segment_3 for embeds and segment_5 for file_get_content, hence that variation. --}
+{!-- The ee entry titles usually have a prefix number in the format of "2Lesson". The low_replace code eliminates those numbers --} 
+<div>
+
+<?php $counter=0; ?>
+<?php $fileloc = ""; ?>
+
+{exp:channel:entries entry_id="{if embed:lesson-ids}0|{embed:lesson-ids}{if:else}0|{whichlessons}{/if}" channel="childrenlesson" category="521&329" orderby="" sort="asc" dynamic="no" site="resourcewell" cache="no" refresh="10"}
+    {if count==1}<li class="sub">Ages 2-3</li>{/if}
+    {if segment_3 == '{url_title}'}<li class="active">
+	{if:elseif segment_5 == '{url_title}'}<li class="active">
+	{if:else}<li>
+	{/if}
+
+	{if embed:language}
+		{exp:playa:children field="lesson-language" search:topic_tags="{segment_3}" cache="no" refresh="10"}
+			<?php $fileloc = "{files-location}"; ?>
+		{/exp:playa:children}
+
+		<?php if($fileloc != ""): ?>
+			<a href="<?php echo $fileloc; ?>" class="underline">{exp:low_replace find="4Lesson" replace="Lesson"}A{title}{/exp:low_replace}</a>
+		<?php else: ?>
+			{exp:low_replace find="4Lesson" replace="Lesson"}
+					A{title}
+				{/exp:low_replace}
+		<?php endif; ?>
+	{if:else}
+		<a href="{exp:low_replace find="index.php/"}{url_title_path='children-ministry/lesson'}{/exp:low_replace}">
+			{exp:low_replace find="4Lesson" replace="Lesson"}
+				{title}
+			{/exp:low_replace}
+     	</a>	{/if}
+    </li>
+    <?php ++$counter; $fileloc = ""; ?>
+{/exp:channel:entries}
+
+
+
+
+<?php $counter=0; ?>
+<?php $fileloc = ""; ?>
+
+{exp:channel:entries entry_id="{if embed:lesson-ids}0|{embed:lesson-ids}{if:else}0|{whichlessons}{/if}" channel="childrenlesson" category="344&329" orderby="" sort="asc" dynamic="no" site="resourcewell" cache="no" refresh="10"}
+    {if count==1}<li class="sub">Ages 2-5</li>{/if}
+    {if segment_3 == '{url_title}'}<li class="active">
+	{if:elseif segment_5 == '{url_title}'}<li class="active">
+	{if:else}<li>
+	{/if}
+
+	{if embed:language}
+		{exp:playa:children field="lesson-language" search:topic_tags="{segment_3}" cache="no" refresh="10"}
+			<?php $fileloc = "{files-location}"; ?>
+		{/exp:playa:children}
+
+		<?php if($fileloc != ""): ?>
+			<a href="<?php echo $fileloc; ?>" class="underline">{title}</a>
+		<?php else: ?>
+			{title}
+		<?php endif; ?>
+	{if:else}
+        	<a href="{exp:low_replace find="index.php/"}{url_title_path='children-ministry/lesson'}{/exp:low_replace}">{title}</a>
+	{/if}
+    </li>
+    <?php ++$counter; $fileloc = ""; ?>
+{/exp:channel:entries}
+
+<?php $counter=0; $fileloc = ""; ?>
+{exp:channel:entries entry_id="{if embed:lesson-ids}0|{embed:lesson-ids}{if:else}0|{whichlessons}{/if}" channel="childrenlesson" category="395&329" orderby="" sort="asc" dynamic="no" site="resourcewell" cache="no" refresh="10"}
+    {if count==1}<li class="sub">Ages 6-12</li>{/if}
+    {if segment_3 == '{url_title}'}<li class="active">
+	{if:elseif segment_5 == '{url_title}'}<li class="active">
+	{if:else}<li>{/if}
+
+	{if embed:language}
+		{exp:playa:children field="lesson-language" search:topic_tags="{segment_3}" cache="no" refresh="10"}
+			<?php $fileloc = "{files-location}"; ?>
+		{/exp:playa:children}
+
+		<?php if($fileloc != ""): ?>
+			<a href="<?php echo $fileloc; ?>" class="underline">
+				{exp:low_replace find="2Lesson" replace="Lesson"}
+					{title}
+				{/exp:low_replace}
+			</a>
+		<?php else: ?>
+			{exp:low_replace find="2Lesson" replace="Lesson"}
+				{title}
+			{/exp:low_replace}
+		<?php endif; ?>
+	{if:else}
+		<a href="{exp:low_replace find="index.php/"}{url_title_path='children-ministry/lesson'}{/exp:low_replace}">
+			{exp:low_replace find="2Lesson" replace="Lesson"}
+				{title}
+			{/exp:low_replace}
+     	</a>
+	{/if}
+    </li>
+    <?php ++$counter; $fileloc = ""; ?>
+{/exp:channel:entries}
+
+<?php $counter=0; $fileloc = ""; ?>
+{exp:channel:entries entry_id="{if embed:lesson-ids}0|{embed:lesson-ids}{if:else}0|{whichlessons}{/if}" channel="childrenlesson" category="419&329" orderby="" sort="asc" dynamic="no" site="resourcewell" cache="no" refresh="10"}
+    {if count==1}<li class="sub">Adaptation for Children with Disabilities</li>{/if}
+	{if segment_3 == '{url_title}'}<li class="active">
+	{if:elseif segment_5 == '{url_title}'}<li class="active">
+	{if:else}<li>{/if}
+
+	{if embed:language}
+		{exp:playa:children field="lesson-language" search:topic_tags="{segment_3}" cache="no" refresh="10"}
+			<?php $fileloc = "{files-location}"; ?>
+		{/exp:playa:children}
+
+		<?php if($fileloc != ""): ?>
+			<a href="<?php echo $fileloc; ?>" class="underline">
+				{exp:low_replace find="3Lesson" replace="Lesson"}
+					{title}
+				{/exp:low_replace}
+			</a>
+		<?php else: ?>
+			{exp:low_replace find="3Lesson" replace="Lesson"}
+				{title}
+			{/exp:low_replace}
+		<?php endif; ?>
+	{if:else}
+        	<a href="{exp:low_replace find="index.php/"}{url_title_path='children-ministry/lesson'}{/exp:low_replace}">
+				{exp:low_replace find="3Lesson" replace="Lesson"}
+					{title}
+				{/exp:low_replace}
+			</a>
+	{/if}
+    </li>
+    <?php ++$counter; $fileloc = ""; ?>
+{/exp:channel:entries}
+</div>

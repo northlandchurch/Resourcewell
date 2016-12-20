@@ -1,0 +1,27 @@
+<div id="lesson-year" class="w195">
+{exp:channel:entries channel="childrenyear" category_group="22" dynamic="no" sort="asc"}
+	<h1>{title}</h1>
+	<ul id="year-menu">
+	{year-units disable="category_fields|member_data|pagination"}
+		{categories}
+			{if category_id == "424"}
+				<li class="unit_header">{title}</li>
+			{if:else}
+				<li class="unit">
+					<a class="unit" href="#">{title}<div>{unit-descrip}</div></a>
+					<ul>
+					{if {unit-lessons:total_children} > 0}
+						<div>
+							{embed="_components/curriculum_unit_menu" lesson-ids="{unit-lessons:entry_ids}"}
+						</div>
+					{if:else}
+						<div><li class="sub">No Lessons found for this unit</li></div>
+					{/if}
+					</ul>
+				</li>
+			{/if}
+		{/categories}
+	{/year-units}
+	</ul>
+{/exp:channel:entries}
+</div>
