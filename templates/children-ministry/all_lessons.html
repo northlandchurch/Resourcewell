@@ -24,12 +24,12 @@
 <div class="w585 marg-t-20">
 	<h5 class="din">Scope &amp; Sequence</h5>
         <div>
-            {exp:channel:entries channel="childrenyear" dynamic="off" sort="asc" order_by="title"}
+		{exp:channel:entries channel="childrenyear" dynamic="no" sort="asc" orderby="title" disable="categories|member_data|pagination"}
     		<ul class="scope_summary">
 				{if year-units}
 					<h1>{title}</h1>
 				{/if}
-				{year-units disable="member_data|pagination"}            		
+				{year-units disable="category_fields|member_data|pagination"}            		
 					{categories}
 						{if category_id == "424"}
 							<li class="unit_header">
@@ -54,10 +54,7 @@
 					{/if}
 					{/year-units}
            	</ul>
-            <?php
-            ++$catcount;
-            ?>
-            {/exp:channel:entries}
+		{/exp:channel:entries}
         </div>
 
 	</div>
@@ -65,7 +62,7 @@
 	<div id="sidebar" class="w315">
 		<br />
 		{embed="_components/themission"}
-        	{embed="_components/newsletter"}
+		{embed="_components/newsletter"}
 	</div>
     <div class="clear"></div>
 </div>
