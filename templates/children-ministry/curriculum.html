@@ -36,15 +36,15 @@
 
         <div id="scopes">
 {!--		
-		{embed="_components/curriculum_scope" }
---}		
+		{embed="_components/curriculum_menu" }
+ --}		 
 <?php
 	// Activate below if you want to use Cache 
 	require_once ('/var/www/ee/scripts/keephpcache/KeePHPCache_resourcewell.php');
 
 	$cache			= new KeePHPCache();
-	$exp_interval 	= 200000;									// Expiration interval: minutes
-	$request_uri 	= '/_components/curriculum_scope';			// Template file that you want to cache
+	$exp_interval 	= 60*24*30;									// Expiration interval: minutes
+	$request_uri 	= '/_components/curriculum_menu';			// Template file that you want to cache
 	
 	// Check if the cache file is expired
 	if (!$cache->isCacheExpired($request_uri, $exp_interval))

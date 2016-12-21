@@ -1,3 +1,12 @@
+{!--	
+  	Category in Children
+	329 : The Worship, The Word & The Way
+
+	Category in Age Groups
+	344	: Ages 2-5
+	395 : Ages 6-12
+	419 : Special Needs 
+ --}
 {exp:channel:entries 
 	entry_id="{embed:lesson-ids}" 
 	channel="childrenlesson" 
@@ -7,10 +16,9 @@
 }
     {if count==1}<li class="sub">Ages 2-5</li>{/if}
 	<li id="{url_title}">
-       	<a href="/children-ministry/lesson_kee/{url_title}">{title}</a>
+       	<a href="/children-ministry/lesson/{url_title}">{title}</a>
     </li>
 {/exp:channel:entries}
-
 
 {exp:channel:entries 
 	entry_id="{embed:lesson-ids}" 
@@ -21,10 +29,9 @@
 }
     {if count==1}<li class="sub">Ages 6-12</li>{/if}
 	<li id="{url_title}">
-       	<a href="/children-ministry/lesson_kee/{url_title}">{exp:low_replace find="2Lesson" replace="Lesson"}{title}{/exp:low_replace}</a>
+       	<a href="/children-ministry/lesson/{url_title}">{exp:low_replace find="2Lesson" replace="Lesson"}{title}{/exp:low_replace}</a>
     </li>
 {/exp:channel:entries}
-
 
 {exp:channel:entries 
 	entry_id="{embed:lesson-ids}" 
@@ -35,55 +42,6 @@
 }
     {if count==1}<li class="sub">Adaptation for Children with Disabilities</li>{/if}
 	<li id="{url_title}">
-       	<a href="/children-ministry/lesson_kee/{url_title}">{exp:low_replace find="3Lesson" replace="Lesson"}{title}{/exp:low_replace}</a>
+       	<a href="/children-ministry/lesson/{url_title}">{exp:low_replace find="3Lesson" replace="Lesson"}{title}{/exp:low_replace}</a>
     </li>
 {/exp:channel:entries}
-
-
-{!--
-
-{exp:channel:entries 
-	entry_id="0|{embed:lesson-ids}" 
-	channel="childrenlesson" 
-	category="344&329" orderby="" sort="asc" dynamic="no" 
-	disable="categories|member_data|pagination"
-	site="resourcewell" cache="no" refresh="10"
-}
-    {if count==1}<li class="sub">Ages 2-5</li>{/if}
-	<li>
-       	<a href="{exp:low_replace find='index.php/'}{url_title_path='children-ministry/lesson_kee'}{/exp:low_replace}">{title}</a>
-    </li>
-{/exp:channel:entries}
-
-
-{exp:channel:entries 
-	entry_id="0|{embed:lesson-ids}" 
-	channel="childrenlesson" 
-	category="395&329" orderby="" sort="asc" dynamic="no" 
-	disable="categories|member_data|pagination"
-	site="resourcewell" cache="no" refresh="10"
-}
-    {if count==1}<li class="sub">Ages 6-12</li>{/if}
-	<li>
-       	<a href="{exp:low_replace find='index.php/'}{url_title_path='children-ministry/lesson_kee'}{/exp:low_replace}">
-			{exp:low_replace find="2Lesson" replace="Lesson"}{title}{/exp:low_replace}
-		</a>
-    </li>
-{/exp:channel:entries}
-
-
-{exp:channel:entries 
-	entry_id="0|{embed:lesson-ids}" 
-	channel="childrenlesson" 
-	category="419&329" orderby="" sort="asc" dynamic="no" 
-	disable="categories|member_data|pagination"
-	site="resourcewell" cache="no" refresh="10"
-}
-    {if count==1}<li class="sub">Adaptation for Children with Disabilities</li>{/if}
-	<li>
-       	<a href="{exp:low_replace find='index.php/'}{url_title_path='children-ministry/lesson_kee'}{/exp:low_replace}">
-			{exp:low_replace find="3Lesson" replace="Lesson"}{title}{/exp:low_replace}
-		</a>
-    </li>
-{/exp:channel:entries}
---}
