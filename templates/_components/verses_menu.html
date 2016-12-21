@@ -1,0 +1,29 @@
+{!--	Category in Unit Header		--}
+{!--	424 : Unit Header			--}
+{exp:channel:entries 
+	channel="childrenyear" 
+	dynamic="no" orderby="title" sort="asc" 
+	disable="categories|member_data|pagination"
+}
+	{if count == 1}
+	<ul class="scope shown">
+	{if:else}
+	<ul class="scope">
+	{/if}
+
+	{year-units disable="category_fields|member_data|pagination"}       		
+		{categories}
+			{if category_id == "424"}
+				<li class="unit_header">{title}</li>
+			{if:else}
+				<li class="head">{title}<div>{unit-descrip}</div></li>
+				{if {unit-lessons:total_children} < 1}
+					<div>No Verses found for this unit</div>
+				{if:else}
+					{embed="children-ministry/_verses-loop" lesson-ids="{unit-lessons:entry_ids}"}
+				{/if}
+			{/if}
+		{/categories}
+	{/year-units}
+	</ul>
+{/exp:channel:entries}
