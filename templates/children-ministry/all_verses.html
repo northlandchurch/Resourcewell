@@ -1,10 +1,6 @@
 {embed="_includes/header" htmltitle="Children&rsquo;s Ministry: The Word, The Worship, The Way"}
 {embed="_includes/nav" active="children"}
 
-{if segment_3 == ""}
-	{exp:static_page_caching:automatic_cache}
-{/if}
-
 
 <div class="container mid">
 	<div id="subhead-curriculum">
@@ -23,29 +19,29 @@
 
 	<div class="w585 marg-t-20">
 		<div>
-		{exp:channel:entries 
-			channel="childrenyear" 
-			dynamic="no" orderby="title" sort="asc" 
-			disable="categories|member_data|pagination"
-		}
-			<ul class="scope">
-			{year-units disable="member_data|pagination"}            		
-				{categories}
-					{if category_id == "424"}
-						<li class="unit_header">{title}</li>
-					{if:else}
-						<li class="head">{title}<div>{unit-descrip}</div></li>
-						{if {unit-lessons:total_children} > 0}
-							{embed="children-ministry/_verses-loop" lesson-ids="{unit-lessons:entry_ids}"}
-						{if:else}
-							<div>No Verses found for this unit</div>
-						{/if}
-					{/if}
-				{/categories}
+{!--		{embed="_components/all_verses_menu" }		--}
+<?php
+	// Activate below if you want to use Cache 
+	require_once ('/var/www/ee/scripts/keephpcache/KeePHPCache_resourcewell.php');
 
-			{/year-units}
-			</ul>
-		{/exp:channel:entries}
+	$cache			= new KeePHPCache();
+	$exp_interval 	= 60*24*30;									// Expiration interval: minutes
+	$request_uri 	= '/_components/all_verses_menu';			// Template file that you want to cache
+	
+	// Check if the cache file is expired
+	if (!$cache->isCacheExpired($request_uri, $exp_interval))
+	{
+		// Return cached contents by getting the location of cache file (/var/www/ee/new_page_caching/$request_uri/index.html)
+		include($cache->getRealCacheFilePath($request_uri));
+		echo "<!-- End of Cached contents at " . $request_uri . "... -->";
+	}
+	else
+	{
+		// Write content into a cache file and display it
+		echo $cache->writeCacheFile($request_uri);
+		echo "<!-- End of Live contents at " . $request_uri . "... -->";
+	}
+?>
 		</div>
 
 	</div>
