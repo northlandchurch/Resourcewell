@@ -1,0 +1,56 @@
+{preload_replace:filenaming="GW|PP|KK|OR|U10-|U2-|U3-|U4-|U5-|U6-|U7-|U8-|U9-|U1-|U10|U2|U3|U4|U5|U6|U7|U8|U9|U1|RL1-|L1-|L2-|L3-|L4-|L5-|L6-|L7-|L8-|L9-|L10-|L11-|L12-|L13-|L14-|L15-|L16-|L17-|L18-|L19-|L20-|L21-|L22-|L23-|L24-|L25-|L26-|L27-|L28-|L29-|L30-|L31-|L32-|L33-|L34-|L35-|L36-|L37-|L38-|L39-|L40-|L41-|L42-|L43-|L44-|L45-|L46-|L47-|L48-|L49-|L50-|L51-|L52-|4-5|4-11|4-12|6-7|6-8|6-9|6-10|6-11|6-12|8-9|8-10|8-11|8-12|10-11|10-12|"}
+{preload_replace:fileages="GW|PP|KK|U1-|U2-|U3-|U4-|U5-|U6-|U7-|U8-|U9-|U10-|U1|U2|U3|U4|U5|U6|U7|U8|U9|U10|L1-|L2-|L3-|L4-|L5-|L6-|L7-|L8-|L9-|L10-|L11-|L12-|L13-|L14-|L15-|L16-|L17-|L18-|L19-|L20-|L21-|L22-|L23-|L24-|L25-|L26-|L27-|L28-|L29-|L30-|L31-|L32-|L33-|L34-|L35-|L36-|L37-|L38-|L39-|L40-|L41-|L42-|L43-|L44-|L45-|L46-|L47-|L48-|L49-|L50-|L51-|L52-|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z| |--|"}
+{exp:channel:entries channel="childrenlesson" url_title="{segment_3}" dynamic="off"}
+<div id="verse-wrapper">
+	<h1>{title}</h1>
+
+	<div class="docs">
+        <h6>Documents</h6>
+
+        {if lesson-docs}
+			{lesson-docs}
+				<?php $val = "{title}"; ?>
+				<?php preg_match_all('/-[0-9]+/',$val,$title); ?>
+			
+				{if files-newloc ==''}{exp:low_replace find="http://www.resourcewell.org/_resources/children/" replace="http://resourcewell.s3.amazonaws.com/children/"}<a href="{files-location}">{/exp:low_replace}
+				{if:else}<a href="http://resourcewell.s3.amazonaws.com/children/{files-newloc}">
+				{/if}
+				{exp:low_replace find="{filenaming}" multiple="yes"}{title}{/exp:low_replace} (Ages <?php echo substr($title[0][0],1).$title[0][1]; ?>)</a><br />
+			{/lesson-docs}
+
+        {if:else}No documents.{/if}
+	</div>
+
+	
+	<div class="video">
+        <h6>Video</h6>
+
+        {if lesson-video}
+			{lesson-video}
+				<?php $val = "{title}"; ?>
+				<?php preg_match_all('/-[0-9]+/',$val,$title); ?>
+				{if files-newloc ==''}
+					{if files-thirdparty !=''}<a href="http://{files-thirdparty}">
+					{if:else}     {exp:low_replace find="http://www.resourcewell.org/_resources/children/" replace="http://resourcewell.s3.amazonaws.com/children/"}<a href="{files-location}">{/exp:low_replace}{/if}
+				{if:else}<a href="http://resourcewell.s3.amazonaws.com/children/{files-newloc}">{/if}
+				{exp:low_replace find="{filenaming}|1-|2-|3-|4-|5-|6-|7-|8-|9-|10-|11-|12-" multiple="yes"}{title}{/exp:low_replace}
+				</a><br />
+			{/lesson-video}
+
+        {if:else}No videos.{/if}
+	</div>
+
+	<div class="audio">
+        <h6>Audio</h6>
+
+        {if lesson-audio}
+			{lesson-audio}
+				<?php $val = "{title}"; ?>
+				<?php preg_match_all('/-[0-9]+/',$val,$title); ?>
+				{if files-newloc ==''}{exp:low_replace find="http://www.resourcewell.org/_resources/children/" replace="http://resourcewell.s3.amazonaws.com/children/"}<a href="{files-location}">{/exp:low_replace}{if:else}<a href="http://resourcewell.s3.amazonaws.com/children/{files-newloc}">{/if}{exp:low_replace find="{filenaming}" multiple="yes"}{title}{/exp:low_replace} (Ages <?php echo substr($title[0][0],1).$title[0][1]; ?>)</a><br />
+			{/lesson-audio}
+
+        {if:else}No audio.{/if}
+	</div>
+</div>
+{/exp:channel:entries}
