@@ -1,0 +1,28 @@
+{!--	Category in Children								--}
+{!--	331 : Other Resources, Spanish, and Arabic			--}
+{exp:channel:entries 
+	channel="childrenlesson" 
+	category="331" dynamic="no" 
+	orderby="title" sort="asc"
+	disable="categories|member_data|pagination"
+}
+<div class="otherresource">
+	<h4>{title}</h4>
+	{lesson-descrip}
+	<p>
+	{lesson-docs limit="1"}<strong>Documents:</strong><br />{/lesson-docs}
+	{lesson-docs}{if files-newloc ==''}{exp:low_replace find="http://www.resourcewell.org/_resources/children/" replace="http://resourcewell.s3.amazonaws.com/children/"}<a href="{files-location}">{/exp:low_replace}{if:else}<a href="http://resourcewell.s3.amazonaws.com/children/{files-newloc}">{/if}{exp:low_replace find="{filenaming}" multiple="yes"}{title}{/exp:low_replace}</a><br />{/lesson-docs}
+	</p>
+
+	<p>
+	{lesson-video limit="1"}<strong>Video:</strong><br />{/lesson-video}
+	{lesson-video}{if files-newloc ==''}{exp:low_replace find="http://www.resourcewell.org/_resources/children/" replace="http://resourcewell.s3.amazonaws.com/children/"}<a href="{files-location}">{/exp:low_replace}{if:else}<a href="http://resourcewell.s3.amazonaws.com/children/{files-newloc}">{/if}{exp:low_replace find="{filenaming}" multiple="yes"}{title}{/exp:low_replace}</a><br />{/lesson-video}
+	</p>
+
+	<p>
+	{lesson-audio limit="1"}<strong>Audio:</strong><br />{/lesson-audio}
+	{lesson-audio}{if files-newloc ==''}{exp:low_replace find="http://www.resourcewell.org/_resources/children/" replace="http://resourcewell.s3.amazonaws.com/children/"}<a href="{files-location}">{/exp:low_replace}{if:else}<a href="http://resourcewell.s3.amazonaws.com/children/{files-newloc}">{/if}{exp:low_replace find="{filenaming}" multiple="yes"}{title}{/exp:low_replace}</a><br />{/lesson-audio}
+	</p>
+	
+</div>
+{/exp:channel:entries}

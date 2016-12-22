@@ -12,7 +12,7 @@
 			<li><a href="http://www.resourcewell.org/children-ministry/curriculum/">Curriculum</a></li>
 			<li><a href="http://www.resourcewell.org/children-ministry/verses/">Bible Memory Verse Songs</a></li>
 			<li class="active">Other Resources</a></li>
-			<li><a href="http://www.resourcewell.org/discussions/children-discussion/">Discussion</a></li>
+<!--			<li><a href="http://www.resourcewell.org/discussions/children-discussion/">Discussion</a></li>	-->
 		</ul>
 	</div>
 
@@ -20,28 +20,29 @@
 		<p>The resources here are designed to stand alone or supplement The Worship, The Word & The Way Children's Bible Curriculum. These resources are listed alphabetically for your convenience.</p>
 		<div class="clear marg-b-40"></div>
 
-		{exp:channel:entries channel="childrenlesson" category="331" dynamic="off" orderby="title" sort="asc" order_by="title"}
-		<div class="otherresource">
-			<h4>{title}</h4>
-			{lesson-descrip}
-			<p>
-			{lesson-docs limit="1"}<strong>Documents:</strong><br />{/lesson-docs}
-			{lesson-docs}{if files-newloc ==''}{exp:low_replace find="http://www.resourcewell.org/_resources/children/" replace="http://resourcewell.s3.amazonaws.com/children/"}<a href="{files-location}">{/exp:low_replace}{if:else}<a href="http://resourcewell.s3.amazonaws.com/children/{files-newloc}">{/if}{exp:low_replace find="{filenaming}" multiple="yes"}{title}{/exp:low_replace}</a><br />{/lesson-docs}
-			</p>
+{!--		{embed="_components/children_other_contents" }		--}
+<?php
+	// Activate below if you want to use Cache 
+	require_once ('/var/www/ee/scripts/keephpcache/KeePHPCache_resourcewell.php');
 
-			<p>
-			{lesson-video limit="1"}<strong>Video:</strong><br />{/lesson-video}
-			{lesson-video}{if files-newloc ==''}{exp:low_replace find="http://www.resourcewell.org/_resources/children/" replace="http://resourcewell.s3.amazonaws.com/children/"}<a href="{files-location}">{/exp:low_replace}{if:else}<a href="http://resourcewell.s3.amazonaws.com/children/{files-newloc}">{/if}{exp:low_replace find="{filenaming}" multiple="yes"}{title}{/exp:low_replace}</a><br />{/lesson-video}
-			</p>
-
-			<p>
-			{lesson-audio limit="1"}<strong>Audio:</strong><br />{/lesson-audio}
-			{lesson-audio}{if files-newloc ==''}{exp:low_replace find="http://www.resourcewell.org/_resources/children/" replace="http://resourcewell.s3.amazonaws.com/children/"}<a href="{files-location}">{/exp:low_replace}{if:else}<a href="http://resourcewell.s3.amazonaws.com/children/{files-newloc}">{/if}{exp:low_replace find="{filenaming}" multiple="yes"}{title}{/exp:low_replace}</a><br />{/lesson-audio}
-			</p>
-			
-		</div>
-		{/exp:channel:entries}
-
+	$cache			= new KeePHPCache();
+	$exp_interval 	= 60*24*30;									// Expiration interval: minutes
+	$request_uri 	= '/_components/children_other_contents';			// Template file that you want to cache
+	
+	// Check if the cache file is expired
+	if (!$cache->isCacheExpired($request_uri, $exp_interval))
+	{
+		// Return cached contents by getting the location of cache file (/var/www/ee/new_page_caching/$request_uri/index.html)
+		include($cache->getRealCacheFilePath($request_uri));
+		echo "<!-- End of Cached contents at " . $request_uri . "... -->";
+	}
+	else
+	{
+		// Write content into a cache file and display it
+		echo $cache->writeCacheFile($request_uri);
+		echo "<!-- End of Live contents at " . $request_uri . "... -->";
+	}
+?>
 	</div>
 
 	<div id="sidebar" class="w315">
