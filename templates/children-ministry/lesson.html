@@ -1,18 +1,24 @@
 {exp:channel:entries channel="childrenlesson" dynamic="on" limit="1"}
-{embed="_includes/header" htmltitle="Children&rsquo;s Ministry: Lesson: {title}"}
+	{embed="_includes/header" htmltitle="Children&rsquo;s Ministry: Lesson: {title}"}
 {/exp:channel:entries}
+
 {embed="_includes/nav" active="children"}
 {replace}
-
-
-{if segment_3 != "" && segment_4 == ""}
-	{exp:static_page_caching:automatic_cache}
-{/if}
 
 
 <script type="text/javascript">
 
 $(document).ready(function() {
+
+	console.log('title: ' + '{segment_3}');
+	$('#{segment_3}').addClass("active");
+	$('#year-menu > li.unit > ul > div > li:not([class])').hide();
+//	$('#year-menu > li.unit > ul > div > li.active').prevUntil('li.sub').show();
+//	$('#year-menu > li.unit > ul > div > li.active').nextUntil('li.sub').show();
+	$('#{segment_3}').parent().parent().parent().parent().show();
+	$('#{segment_3}').parent().parent().show();
+	$('#{segment_3}').prevUntil('li.sub').show();
+	$('#{segment_3}').nextUntil('li.sub').show();
 
     switches = $('#switches > li');
     slides = $('#slides > div');
@@ -40,10 +46,6 @@ $(document).ready(function() {
 	return false;
     });
 
-	$('#year-menu > li.unit > ul > div > li:not([class])').hide();
-
-	$('#year-menu > li.unit > ul > div > li.active').prevUntil('li.sub').show();
-	$('#year-menu > li.unit > ul > div > li.active').nextUntil('li.sub').show();
 
 	$('#year-menu > li.unit > ul > div > li.sub').click(function() {
 		$('#year-menu > li.unit > ul > div > li:not([class]), #year-menu > li.unit > ul > div > li.active').show();
@@ -71,36 +73,33 @@ $(document).ready(function() {
 	</div>
 
 	<div id="lesson-year" class="w195">
-        {exp:channel:entries channel="childrenyear" category_group="22" dynamic="off" sort="asc"}
-		<h1>{title}</h1>
-		<ul id="year-menu">
-			{year-units disable="member_data|pagination"}
-			
-				{categories}
-					{if category_id == "424"}
-						<li class="unit_header">{title}
-					{if:else}
-						<li class="unit">
-							<a class="unit" href="#">{title}<div>{unit-descrip}</div></a>
-					{/if}
-				{/categories}
-					
-					<ul>
-					{if {unit-lessons:total_children} > 0}
-						<?php
-							$homepage = file_get_contents('http://www.resourcewell.org/children-ministry/_loop_lessons/entries/'.'{unit-lessons:entry_ids}'.'/{segment_3}');
-							echo $homepage;
-						?>
-					{if:else}
-						<div><li class="sub">No Lessons found for this unit</li></div>
-					{/if}
-					</ul>
-				</li>
-			{/year-units}
-		</ul>
-        {/exp:channel:entries}
-	</div>
+{!--
+	{embed="_components/lesson_menu" }
+--}
+<?php
+	// Activate below if you want to use Cache 
+	require_once ('/var/www/ee/scripts/keephpcache/KeePHPCache_resourcewell.php');
 
+	$cache			= new KeePHPCache();
+	$exp_interval 	= 60*24*30;									// Expiration interval: minutes
+	$request_uri 	= '/_components/lesson_menu';				// Template file that you want to cache
+	
+	// Check if the cache file is expired
+	if (!$cache->isCacheExpired($request_uri, $exp_interval))
+	{
+		// Return cached contents by getting the location of cache file (/var/www/ee/new_page_caching/$request_uri/index.html)
+		include($cache->getRealCacheFilePath($request_uri));
+		echo "<!-- End of Cached contents at " . $request_uri . "... -->";
+	}
+	else
+	{
+		// Write content into a cache file and display it
+		echo $cache->writeCacheFile($request_uri);
+		echo "<!-- End of Live contents at " . $request_uri . "... -->";
+	}
+?>
+	</div>
+	
 	<div class="w705 marg-t-20">
         {exp:channel:entries channel="childrenlesson" dynamic="on" limit="1" track_views="one"}
 		<h4 class="din-lrg">
