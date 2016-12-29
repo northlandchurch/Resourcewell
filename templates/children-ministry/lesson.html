@@ -198,81 +198,81 @@ $(document).ready(function() {
                         <li><a href="#">Audio</a></li>
                     </ul>
 
-		<div id="slides">
-			{exp:channel:entries channel="childrenlesson" url_title="{segment_3}" dynamic="off"}
-			<div class="shown">
-			    <div class="docs">
-				<h6>Documents</h6>
+					<div id="slides">
+					{exp:channel:entries channel="childrenlesson" url_title="{segment_3}" dynamic="off"}
+						<div class="shown">
+							<div class="docs">
+							<h6>Documents</h6>
 
-				{if lesson-docs}
-					<p>
-					<?php $catIs = "safe"; ?>
-					{categories}
-						
-						<?php if (("{category_id}" == "419") || ("{category_id}" == '344')){
-							$catIs = "unsafe";
-						} ?>
+							{if lesson-docs}
+								<p>
+								<?php $catIs = "safe"; ?>
+								{categories}
+									
+									<?php if (("{category_id}" == "419") || ("{category_id}" == '344')){
+										$catIs = "unsafe";
+									} ?>
 
-					{/categories}
-					{lesson-docs}
-						<?php $val = "{title}"; ?>
-						<?php preg_match_all('/-[0-9]+/',$val,$title); ?>
-						{if files-newloc ==''}{exp:low_replace find="http://www.resourcewell.org/_resources/children/" replace="http://resourcewell.s3.amazonaws.com/children/"}<a href="{files-location}">{/exp:low_replace}{if:else}<a href="http://resourcewell.s3.amazonaws.com/children/{files-newloc}">{/if}{exp:low_replace find="{filenaming}" multiple="yes"}{title}{/exp:low_replace}
-						<?php if ($catIs=="safe"){
-							echo " (Ages ";
-							echo substr($title[0][0],1).$title[0][1].")";
-							}
-						?>
-						</a><br />
-					{/lesson-docs}
-				    </p>
-				{if:else}No documents.
-				{/if}
-				</div>
-			</div>
+								{/categories}
+								{lesson-docs}
+									<?php $val = "{title}"; ?>
+									<?php preg_match_all('/-[0-9]+/',$val,$title); ?>
+									{if files-newloc ==''}{exp:low_replace find="http://www.resourcewell.org/_resources/children/" replace="http://resourcewell.s3.amazonaws.com/children/"}<a href="{files-location}">{/exp:low_replace}{if:else}<a href="http://resourcewell.s3.amazonaws.com/children/{files-newloc}">{/if}{exp:low_replace find="{filenaming}" multiple="yes"}{title}{/exp:low_replace}
+									<?php if ($catIs=="safe"){
+										echo " (Ages ";
+										echo substr($title[0][0],1).$title[0][1].")";
+										}
+									?>
+									</a><br />
+								{/lesson-docs}
+								</p>
+							{if:else}No documents.
+							{/if}
+							</div>
+						</div>
 
-			<div>
-				<div class="video">
-				<h6>Video</h6>
+						<div>
+							<div class="video">
+							<h6>Video</h6>
 
-				{if lesson-video}
-					<p>
-					{categories}<?php $category_id = "{category_id}"?>{/categories}
-					{lesson-video}
-						<?php $val = "{title}"; ?>
-						<?php preg_match_all('/-[0-9]+/',$val,$title); ?>
-						{if files-newloc ==''}
-							{if files-thirdparty !=''}<a href="http://{files-thirdparty}">
-							{if:else}{exp:low_replace find="http://www.resourcewell.org/_resources/children/" replace="http://resourcewell.s3.amazonaws.com/children/"}<a href="{files-location}">{/exp:low_replace}{/if}
-						{if:else}<a href="http://resourcewell.s3.amazonaws.com/children/{files-newloc}">{/if}
-						{exp:low_replace find="{filenaming}|1-|2-|3-|4-|5-|6-|7-|8-|9-|10-|11-|12-" multiple="yes"}{title}{/exp:low_replace}
-						</a><br />
-					{/lesson-video}
-					</p>
-				{if:else}No videos.{/if}
-				</div>
-			</div>
+							{if lesson-video}
+								<p>
+								{categories}<?php $category_id = "{category_id}"?>{/categories}
+								{lesson-video}
+									<?php $val = "{title}"; ?>
+									<?php preg_match_all('/-[0-9]+/',$val,$title); ?>
+									{if files-newloc ==''}
+										{if files-thirdparty !=''}<a href="http://{files-thirdparty}">
+										{if:else}{exp:low_replace find="http://www.resourcewell.org/_resources/children/" replace="http://resourcewell.s3.amazonaws.com/children/"}<a href="{files-location}">{/exp:low_replace}{/if}
+									{if:else}<a href="http://resourcewell.s3.amazonaws.com/children/{files-newloc}">{/if}
+									{exp:low_replace find="{filenaming}|1-|2-|3-|4-|5-|6-|7-|8-|9-|10-|11-|12-" multiple="yes"}{title}{/exp:low_replace}
+									</a><br />
+								{/lesson-video}
+								</p>
+							{if:else}No videos.{/if}
+							</div>
+						</div>
 
-			<div>
-                <div class="audio">
-				<h6>Audio</h6>
+						<div>
+							<div class="audio">
+							<h6>Audio</h6>
 
-				{if lesson-audio}
-					<p>
-					{categories}<?php $category_id = "{category_id}"?>{/categories}
-					{lesson-audio}
-						<?php $val = "{title}"; ?>
-						<?php preg_match_all('/-[0-9]+/',$val,$title); ?>
-						{if files-newloc ==''}{exp:low_replace find="http://www.resourcewell.org/_resources/children/" replace="http://resourcewell.s3.amazonaws.com/children/"}<a href="{files-location}">{/exp:low_replace}{if:else}<a href="http://resourcewell.s3.amazonaws.com/children/{files-newloc}">{/if}{exp:low_replace find="{filenaming}" multiple="yes"}{title}{/exp:low_replace}
-						</a><br />
-					{/lesson-audio}
-				    </p>
-				{if:else}No audio.{/if}
-                </div>
-			</div>
+							{if lesson-audio}
+								<p>
+								{categories}<?php $category_id = "{category_id}"?>{/categories}
+								{lesson-audio}
+									<?php $val = "{title}"; ?>
+									<?php preg_match_all('/-[0-9]+/',$val,$title); ?>
+									{if files-newloc ==''}{exp:low_replace find="http://www.resourcewell.org/_resources/children/" replace="http://resourcewell.s3.amazonaws.com/children/"}<a href="{files-location}">{/exp:low_replace}{if:else}<a href="http://resourcewell.s3.amazonaws.com/children/{files-newloc}">{/if}{exp:low_replace find="{filenaming}" multiple="yes"}{title}{/exp:low_replace}
+									</a><br />
+								{/lesson-audio}
+								</p>
+							{if:else}No audio.{/if}
+							</div>
+						</div>
 
-			{/exp:channel:entries}
-		</div>
+					{/exp:channel:entries}
+					</div>
 
 				</div>
             </div>
@@ -281,16 +281,16 @@ $(document).ready(function() {
                 <div id="comments">
                     <h4>Comments</h4>
                     {exp:comment:entries sort="asc"}
-                    {if no_results}<div class="nocomments">No one has commented yet. Be the first!</div>{/if}
-                    <div class="comment">
-                        <div class="author">
-                        	<strong>{name}</strong> 
-                        	<span>{comment_date format="%M. %j, %Y"}</span>
-                        </div>
-                        <div class="said">
-                        	{comment}
-                        </div>
-                    </div>
+						{if no_results}<div class="nocomments">No one has commented yet. Be the first!</div>{/if}
+						<div class="comment">
+							<div class="author">
+								<strong>{name}</strong> 
+								<span>{comment_date format="%M. %j, %Y"}</span>
+							</div>
+							<div class="said">
+								{comment}
+							</div>
+						</div>
                     {/exp:comment:entries}
                     <div class="clear"></div>
         
