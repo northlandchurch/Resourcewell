@@ -1,0 +1,139 @@
+{embed="_includes/header" htmltitle="About Resource Well"}
+{embed="_includes/nav"}
+
+<div class="container mid">
+
+   <div class="well-right marg-b-40">
+        <div class="grid_7">
+            <h1 class="din">About Resource Well</h1>
+            <h4 class="din-lrg">Resource Well is a meeting place and resource center for anyone, anywhere in the world, who is involved in the ministry of the Gospel of Jesus Christ.</h4>
+            <p>
+            	A good well is connected to an unlimited supply of water; we're hoping this is a place of unending creativity,
+            	renewable and sustainable resources and is as simple to use as dropping a bucket down a hole to retrieve 
+            	valuable tools to help grow the Kingdom of the One who brought us Living Water. At Resource Well you can quench 
+            	your thirst for quality resources to enhance your ministry while sharing your ideas with other believers around 
+            	the world.
+            </p>
+        </div>
+        <div class="clear"></div>
+    </div>
+
+    <script type="text/javascript">
+    $(document).ready(function() {
+        switches = $('#switches > li');
+        slides = $('#slides > div');
+        switches.each(function(idx) {
+            $(this).data('slide', slides.eq(idx));
+        }).click(
+            function() {
+            switches.removeClass('active');
+            slides.removeClass('shown');             
+            $(this).addClass('active');  
+            $(this).data('slide').addClass('shown');
+        });
+    });
+    </script>
+
+	<div id="about" class="module-907">
+		<h2 class="din">RESOURCES TO TEACH WHO GOD IS AND WHAT HE HAS DONE</h2>
+	    <div class="top">
+	    	<ul id="switches" class="sub-tabs">
+			{if segment_2 != "support-the-mission"}
+	    		<li class="active">Children</li>
+			{if:else}
+			<li>Children</li>
+			{/if}
+	    		<li>Youth</li>
+	    		<li>Adult</li>
+	    		<li>Church in Your Home</li>
+			{if segment_2 == "support-the-mission"}
+	    		<li class="active">Learn About The Mission</li>
+			{if:else}
+			<li>Learn About The Mission</li>
+			{/if}
+	    	</ul>
+	    </div>
+	    <div id="slides" class="mid">
+	    <div {if segment_2 != "support-the-mission"}class="shown"{/if}>
+            	<h4 class="din-lrg">Resources for Children's Ministry</h4>
+        		<img src="{resourcewell-img}/pics/children.png" class="corner-image" />
+        		<div class="left">
+        			<p><strong>A variety of curriculum components are used to tell the stories of God from Genesis to Revelation</strong>, including resources ranging from teacher guides, Bible memory verse songs, drama and puppet scripts, storybooks, theme-related games, crafts, snacks, and take home Bible studies.</p>
+        			<p><strong>Additional resources for specific topics</strong> including Leading a Child to Christ, the Apostles' Creed, the Lenten Season, and more are also available.</p>
+        		</div>
+        		<div class="left">
+        			<p><strong>Leaders and teachers are encouraged to adapt materials to their specific context,</strong> whether that is a large Sunday School, a Children's Church format, or a small, multi-age application in a home church, Vacation Bible School, or Bible class.</p>
+        			<p><strong>Leaders and teachers are invited to offer feedback concerning curriculum use and adaptations,</strong> ideas sparked by the lesson for further crafts, games and other enrichment activities, and more.</p>
+        			<p><a href="/children-ministry">See all Children's Ministry Resources</a></p>
+        		</div>
+            	<div class="clear"></div>
+            </div>
+
+            <div>
+            	<h4 class="din-lrg">Resources for Youth Ministry</h4>
+			<img src="{resourcewell-img}/pics/youth.png" class="corner-image" />
+               		<div>
+                		<p><strong>With a focus on helping students understand they are children of God made in His image</strong>, students will have the opportunity to practice applying God’s word to their hearts and lives. As they enter a developmental stage where they begin to make their own choices, this is key to healthy spiritual development.</p>
+
+				<p><strong>This curriculum teaches Biblical principles.</strong> Both small and large group settings provide environments where relationships can be formed intentionally. Regular use of these studies will reinforce the daily habit of spending time in God’s word.</p>
+	                	<p><a href="/youth-ministry">See all Youth Ministry Resources</a></p>
+                	</div>
+                <div class="clear"></div>
+            </div>
+
+            <div>
+            	<h4 class="din-lrg">Resources for Adult Ministry</h4>
+                <img src="{resourcewell-img}/pics/adult.png" class="corner-image" />
+                <div>
+                	<p><strong>Our mission is to help believers respond to God for the benefit of others.</strong> We hope to help believers worship God, read the Bible, pray, serve others, live generously, be in community, and share stories of God’s grace and goodness.</p>
+
+			<p><strong>To that end, these resources have been created to equip and encourage.</strong> In order to live out our philosophy, we want to freely give to others whatever God has given to us. These resources are free for the taking. No strings attached. We have copyrighted these materials merely to assure that anyone (including us) can continue to use them freely. However, we encourage you to take what helps you, make it your own, and see what God does.</p>
+                	<p><a href="/adult-ministry">See all Adult Ministry Resources</a></p>
+                </div>
+                <div class="clear"></div>
+            </div>
+
+            <div>
+            	<h4 class="din-lrg">Church in Your Home</h4>
+                <div><img src="{resourcewell-img}/pics/churchinyourhome.png" class="corner-image" /></div>
+                <div class="left">
+                	<p><strong>Church in Your Home is a ministry of Northland, A Church Distributed.</strong> We are committed to helping people be the church, everywhere, everyday. Although we are a church of 15,000 people, we meet in many locations and with groups ranging from a few people to a few thousand people. The resources on this page are intended to help you live out the life of the church in a smaller venue without the need for a permanent building or even paid staff.</p>
+
+			<p><strong>Variety:</strong> Because there is no one right way to be a simple church, you will find several different training models and lots of ideas. Feel free to use, adapt and share these materials.</p>
+
+		</div>
+		<div class="left">
+			<p><strong>Comprehensive:</strong> We are constantly adding new resources so you will be able to find what you need for your situation. One way we are able to improve our content is by hearing from you. Feel free to let us know new ideas you have and what you would like to see added.</p>
+			<p><strong>Relationships:</strong> None of us can be the church on our own. No single group of people can be the church by itself. We need to be connected! Feel free to contact us and join the dialogue in the blog section. You may also consider becoming a part of the Northland Network of churches.</p>
+			<p><a href="/churchinyourhome">See all Church in Your Home Ministry Resources</a></p>
+                </div>
+                <div class="clear"></div>
+            </div>
+
+	    <div {if segment_2 == "support-the-mission"}class="shown"{/if}>
+            	<h4 class="din-lrg">Learn About The Mission</h4>
+                <div>
+			<p><strong>What is the mission?</strong><br />The mission is simple – to support the work of ministry leaders everywhere by offering a place of distribution where resources of ideas and materials come in and go out with regularity. It is our prayer that these resources will equip leaders to help people know who God is and respond to what He has done. Picture the body of Christ working together in all areas of the world to resource, encourage and strengthen one another in ministry.</p>
+			<br />
+			<p><strong>How can this website serve the needs of my ministry?</strong><br />You are invited to download any part or all of the resources found on Resource Well. You are free to adapt them for your use and make copies; however, they are copyrighted materials and thus, you are not able to pass them on for sale.</p>
+			<br />
+			<p><strong>How can my ministry support the mission of Resource Well?</strong><br />
+			<ul>
+				<li><strong>Prayers:</strong> Pray for God to coordinate all our efforts so that the resources will be distributed to all who have need of them. Pray that God will continue to bless the global relationships that give and receive resources through Resource Well, and that God would use this website to help build His kingdom by equipping its leaders.</li>
+				<li><strong>Financial Partnership:</strong> If you are interested in becoming a financial partner, please contact info@northlandchurch.net.</li>
+				<li><strong>Translations:</strong> We're looking for partners to translate these materials into other languages and cultures. Currently partners are translating the curriculum for children into Russian, Spanish, and Arabic. If you are interested in joining those ongoing translation efforts, or in forming a team to translate Resource Well materials into your own language, please contact us so we can explore together the best ways to share these resources with others of your language group.</li>
+				<li><strong>Adaptations and Ideas:</strong> Any insight and encouragement you can share about how you have adapted these resources to fit your environment, culture, and group size is very helpful to other ministries with similar challenges. Please share those ideas with the world by clicking on our blog.</li>
+			</ul>
+			</p>
+
+		</div>
+                <div class="clear"></div>
+            </div>
+	    </div>
+
+	    <div class="btm"></div>
+    </div>
+    <div class="clear"></div>
+</div>
+
+{embed="_includes/footer"}
