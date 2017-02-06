@@ -1,0 +1,47 @@
+{embed="_includes/header" htmltitle="The Resource Well Blog"}
+{embed="_includes/nav" active="blog"}
+
+<div class="container mid">
+	<div id="subhead-curriculum" class="blog">
+		<div class="breadcrumb">
+			You are here: &nbsp;<a href="http://www.resourcewell.org">Home</a> &nbsp;/ Blog
+		</div>
+		<h1 class="din">The Resource Well Blog</h1>
+	</div>
+
+	<div id="blogs" class="w585 marg-t-20">
+        {exp:channel:entries channel="rw-blog"}
+        <div class="entry">
+    		<h4 class="din-lrg"><a href="{exp:low_replace find="index.php/"}{url_title_path='blog/entry'}{/exp:low_replace}">{title}</a></h4>
+    		<div class="info">
+    		    <span class="script">by</span> <strong> <a href="{exp:strip_html}{staff_bio_link}{/exp:strip_html}">{author}</a></strong> &nbsp;|&nbsp; {entry_date format="%F %j, %Y"}	
+    		    <div class="commentcount">
+    		        {if comment_total == '0'}No Comments{/if}
+                    {if comment_total == '1'}<a href="{exp:low_replace find="index.php/"}{url_title_path='blog/entry'}{/exp:low_replace}#comments">1 Comment</a>{/if}
+                    {if comment_total > '1'}<a href="{exp:low_replace find="index.php/"}{url_title_path='blog/entry'}{/exp:low_replace}#comments">{comment_total} Comments</a>{/if}
+    		    </div>
+    		</div>
+    		{exp:trunchtml chars="420" inline="..." ending="<a href='{exp:low_replace find='index.php/'}{url_title_path='blog/entry'}{/exp:low_replace}'>Read more</a>"}{exp:strip_html keep="p"}{description}{/exp:strip_html}{/exp:trunchtml}
+        </div>
+        {/exp:channel:entries}
+		<div class="clear marg-b-40"></div>
+	</div>
+
+	<div id="sidebar" class="w315">
+		<h3>Blog Categories</h3>
+        {exp:channel:categories channel="rw-blog" category_group="26" show_empty="no"}
+        <span class="din">{count}</span> <a href="{path='blog/category'}">{category_name}</a>
+        {/exp:channel:categories}
+
+		<p><a href="http://www.resourcewell.org/blog" class="grey-button"><span class="din">VIEW ALL ENTRIES</span></a></p>
+		<div class="divider"></div>
+
+{!--        {embed="_components/rsscta"}	--}
+        {embed="_components/themission"}
+        {embed="_components/newsletter"}
+
+	</div>
+    <div class="clear"></div>
+</div>
+
+{embed="_includes/footer"}
