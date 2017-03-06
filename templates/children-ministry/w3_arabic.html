@@ -1,34 +1,36 @@
-{embed="_includes/header" htmltitle="Children&rsquo;s Ministry: The Word, The Worship, The Way"}
+{embed="_includes/header" htmltitle="Children&rsquo;s Ministry: Worship, Word & Way in Arabic"}
 {embed="_includes/nav" active="children"}
 
 <div class="container mid">
 	<div id="subhead-curriculum">
 		<div class="breadcrumb">
-			You are here: &nbsp;<a href="#">Home</a> &nbsp;/ Children's Ministry
+			You are here: &nbsp;<a href="/home">Home</a> &nbsp;/ Children's Ministry
 		</div>
-		<h1 class="din">The Worship, The Word &amp; The Way</h1>
+		<h1 class="din">Worship, Word & Way in Arabic</h1>
 		<ul>
 			<li><a href="http://www.resourcewell.org/children-ministry/">Overview</a></li>
-			<li class="active"><a href="http://www.resourcewell.org/children-ministry/curriculum/">Curriculum</a></li>
+			<li><a href="http://www.resourcewell.org/children-ministry/curriculum/">Curriculum</a></li>
 			<li><a href="http://www.resourcewell.org/children-ministry/verses/">Bible Memory Verse Songs</a></li>
 			<li><a href="http://www.resourcewell.org/children-ministry/other/">Other Resources</a></li>
-			<li><a href="http://www.resourcewell.org/children-ministry/w3_arabic/">Arabic</a></li>
+			<li class="active">Arabic</a></li>
 			<li><a href="http://www.resourcewell.org/children-ministry/w3_spanish/">Spanish</a></li>
 <!--			<li><a href="http://www.resourcewell.org/discussions/children-discussion/">Discussion</a></li>	-->
 		</ul>
 	</div>
-        
+
 	<div class="w585 marg-t-20">
-		<h5 class="din">Scope &amp; Sequence</h5>
-		<div>
-{!--		{embed="_components/all_lessons_menu" }		--}
+		<p>We will be building this page. </p>
+		<div class="clear marg-b-40"></div>
+
+{!--		
+		{embed="_components/children_w3_arabic" }		
 <?php
 	// Activate below if you want to use Cache 
 	require_once ('/var/www/ee/scripts/keephpcache/KeePHPCache_resourcewell.php');
 
 	$cache			= new KeePHPCache();
 	$exp_interval 	= 60*24*30;									// Expiration interval: minutes
-	$request_uri 	= '/_components/all_lessons_menu';			// Template file that you want to cache
+	$request_uri 	= '/_components/children_w3_arabic';			// Template file that you want to cache
 	
 	// Check if the cache file is expired
 	if (!$cache->isCacheExpired($request_uri, $exp_interval))
@@ -44,15 +46,16 @@
 		echo "<!-- End of Live contents at " . $request_uri . "... -->";
 	}
 ?>
-		</div>
+ --}
 	</div>
 
 	<div id="sidebar" class="w315">
 		<br />
 		{embed="_components/themission"}
 		{embed="_components/newsletter"}
+
 	</div>
-    <div class="clear"></div>
+	<div class="clear"></div>
 </div>
 
 {embed="_includes/footer"}
