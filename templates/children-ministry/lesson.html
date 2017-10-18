@@ -1,5 +1,10 @@
 {exp:channel:entries channel="childrenlesson" dynamic="on" limit="1"}
-	{embed="_includes/header" htmltitle="Children&rsquo;s Ministry: Lesson: {title}"}
+	{embed="_includes/header" 
+		htmltitle="Children&rsquo;s Ministry: Lesson: {title}" 
+		imageurl="{site-url}/_resources/children/WWWLogoRGB-web_square.png" 
+		lesson-descrip="{exp:trunchtml chars="200" inline="..."}{exp:strip_html}{lesson-descrip}{/exp:strip_html}{/exp:trunchtml}" 
+		lesson-word="{exp:strip_html}{lesson-word}{/exp:strip_html}" 
+		lesson-url="{site_url}/children-ministry/lesson/{url_title}/"}
 {/exp:channel:entries}
 
 {embed="_includes/nav" active="children"}
@@ -81,7 +86,7 @@ $(document).ready(function() {
 	require_once ('/var/www/ee/scripts/keephpcache/KeePHPCache_resourcewell.php');
 
 	$cache			= new KeePHPCache();
-	$exp_interval 	= 60*24*30;									// Expiration interval: minutes
+	$exp_interval 	= 60*24*2;									// Expiration interval: minutes
 	$request_uri 	= '/_components/lesson_menu';				// Template file that you want to cache
 	
 	// Check if the cache file is expired
@@ -208,7 +213,7 @@ $(document).ready(function() {
 								<?php $catIs = "safe"; ?>
 								{categories}
 									
-									<?php if (("{category_id}" == "419") || ("{category_id}" == '344')){
+									<?php if (("{category_id}" == "419") || ("{category_id}" == '542')){
 										$catIs = "unsafe";
 									} ?>
 
@@ -216,7 +221,8 @@ $(document).ready(function() {
 								{lesson-docs}
 									<?php $val = "{title}"; ?>
 									<?php preg_match_all('/-[0-9]+/',$val,$title); ?>
-									{if files-newloc ==''}{exp:low_replace find="http://www.resourcewell.org/_resources/children/" replace="http://resourcewell.s3.amazonaws.com/children/"}<a href="{files-location}">{/exp:low_replace}{if:else}<a href="http://resourcewell.s3.amazonaws.com/children/{files-newloc}">{/if}{exp:low_replace find="{filenaming}" multiple="yes"}{title}{/exp:low_replace}
+									{if files-newloc ==''}{exp:low_replace find="http://www.resourcewell.org/_resources/children/" replace="http://resourcewell.s3.amazonaws.com/children/"}<a href="{files-location}">{/exp:low_replace}
+									{if:else}<a href="http://resourcewell.s3.amazonaws.com/children/{files-newloc}">{/if}{exp:low_replace find="{filenaming}" multiple="yes"}{title}{/exp:low_replace}
 									<?php if ($catIs=="safe"){
 										echo " (Ages ";
 										echo substr($title[0][0],1).$title[0][1].")";

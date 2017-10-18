@@ -9,6 +9,27 @@
 <meta name="description" content="" />
 <meta charset="utf-8"/>
 
+{if embed:htmltitle != ''}
+<meta property="og:title" content="{embed:htmltitle}" />
+<meta class="swiftype" name="title" data-type="string" content="{embed:htmltitle}" />
+{/if}
+
+{if embed:lesson-url != ''}
+<meta property="og:url" content="{embed:lesson-url}" />
+<meta class="swiftype" name="url" data-type="enum" content="{embed:lesson-url}" />
+{/if}
+<meta property="og:image" content="{embed:imageurl}" />
+<meta class="swiftype" name="image" data-type="enum" content="{embed:imageurl}" />
+
+<meta property="og:type" content="article" />
+<meta class="swiftype" name="type" data-type="enum" content="article" />
+
+{if embed:lesson-descrip != ''}
+<meta property="og:description" content="{embed:lesson-descrip}" />
+{if:else}
+<meta property="og:description" content="{embed:lesson-word}" />
+{/if}
+
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 <link type="text/css" rel="stylesheet" media="all" href="http://www.resourcewell.org/_global/formalize-css" />
 <link type="text/css" rel="stylesheet" media="all" href="http://www.resourcewell.org/_global/main" />
