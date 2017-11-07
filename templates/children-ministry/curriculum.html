@@ -1,4 +1,6 @@
-{embed="_includes/header" htmltitle="Children&rsquo;s Ministry: The Word, The Worship, The Way"}
+{embed="_includes/header" 
+	imageurl="{site-url}/_resources/children/WWWLogoRGB-web_square.png" 
+	htmltitle="Children&rsquo;s Ministry: The Word, The Worship, The Way"}
 {embed="_includes/nav" active="children"}
 
 
@@ -45,7 +47,7 @@
 	require_once ('/var/www/ee/scripts/keephpcache/KeePHPCache_resourcewell.php');
 
 	$cache			= new KeePHPCache();
-	$exp_interval 	= 60*24*30;									// Expiration interval: minutes
+	$exp_interval 	= 60*24*2;									// Expiration interval: minutes
 	$request_uri 	= '/_components/curriculum_menu';			// Template file that you want to cache
 	
 	// Check if the cache file is expired

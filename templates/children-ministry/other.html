@@ -1,4 +1,6 @@
-{embed="_includes/header" htmltitle="Children&rsquo;s Ministry: Other Resources"}
+{embed="_includes/header" 
+	imageurl="{site-url}/_resources/children/WWWLogoRGB-web_square.png" 
+	htmltitle="Children&rsquo;s Ministry: Other Resources"}
 {embed="_includes/nav" active="children"}
 
 <div class="container mid">
@@ -22,14 +24,16 @@
 		<p>The resources here are designed to stand alone or supplement Worship, Word & Way Children's Bible Curriculum. These resources are listed alphabetically for your convenience.</p>
 		<div class="clear marg-b-40"></div>
 
-{!--		{embed="_components/children_other_contents" }		--}
+{!--}		{embed="_components/children_other_contents" }	--}
+
 <?php
 	// Activate below if you want to use Cache 
 	require_once ('/var/www/ee/scripts/keephpcache/KeePHPCache_resourcewell.php');
 
 	$cache			= new KeePHPCache();
-	$exp_interval 	= 60*24*30;									// Expiration interval: minutes
-	$request_uri 	= '/_components/children_other_contents';			// Template file that you want to cache
+	$exp_interval 	= 60*24*30;										// Expiration interval: minutes
+//	$exp_interval 	= 2;											// Expiration interval: minutes
+	$request_uri 	= '/_components/children_other_contents';		// Template file that you want to cache
 	
 	// Check if the cache file is expired
 	if (!$cache->isCacheExpired($request_uri, $exp_interval))
@@ -45,6 +49,7 @@
 		echo "<!-- End of Live contents at " . $request_uri . "... -->";
 	}
 ?>
+
 	</div>
 
 	<div id="sidebar" class="w315">

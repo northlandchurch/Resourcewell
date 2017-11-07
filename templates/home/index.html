@@ -1,14 +1,30 @@
-{embed="_includes/header" htmltitle="Welcome!"}
+{embed="_includes/header" 
+	htmltitle="Welcome!"
+	imageurl="{site-url}/_resources/children/WWWLogoRGB-web_square.png" 
+	lesson-descrip="{exp:trunchtml chars="200" inline="..."}{exp:strip_html}Home of Worship, Word & Way curriculum for children and youth.<br>
+				Look around.<br>
+				Download lessons, media resources, training videos, and more.<br>
+				It's all free. We're glad you're here.{/exp:strip_html}{/exp:trunchtml}" 
+	lesson-url="{site_url}"}
+	
 {embed="_includes/nav" active=""}
 {replace}
+
 
 <div id="welcome" class="container">
     <div class="slider">
         <div id="slide01" class="slide">
             <div class="right">
-                <iframe src="http://player.vimeo.com/video/26965652?title=0&amp;byline=0&amp;portrait=0" width="500" height="281" frameborder="0"></iframe>
+                <iframe src="http://player.vimeo.com/video/26965652?title=0&amp;byline=0&amp;portrait=0" width="500" height="281" frameborder="0" style="display:none"></iframe>	
+				<img src="/_resources/children/otherresources/iStock-140396765_Boy_Bible.jpg" alt="Resource Well" width="500" height="281" style="display:block">	
             </div>
-            <h1>A meeting place and resource center offering free, quality resources to equip you<br>in your ministry.</h1>
+<!--            <h1>A meeting place and resource center offering free, quality resources to equip you<br>in your ministry.</h1>	-->
+            <h1>
+				Home of Worship, Word & Way curriculum for children and youth.<br>
+				Look around.<br>
+				Download lessons, media resources, training videos, and more.<br>
+				It's all free. We're glad you're here.
+			</h1>
 	    <br><br>
             <a href="/about/"><img src="{resourcewell-img}/button/learn-more.png" class="marg-r-20" /></a>
         </div>
@@ -45,7 +61,7 @@
 
     <div class="grid_3">
 		{categories parent_only="yes" limit="1" show="not 368|370|369|329|330|331"}
-		<h4 class="featured"><a href="{exp:low_replace find="index.php/"}
+		<h4 class="featured"><a href="{exp:low_replace find='index.php/'}
 			{if category_id==342}/children-ministry/lesson/{url_title}{/if}{if category_id==416}/adult-ministry/lesson/{url_title}{/if}
 			{if category_id==417}/churchinyourhome-ministry/lesson/{url_title}{/if}
 			{if category_id==343 OR category_id == '336' OR category_id == '337'}/youth-ministry/lesson/{url_title}{/if}
