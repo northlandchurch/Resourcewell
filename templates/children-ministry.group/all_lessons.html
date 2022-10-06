@@ -1,0 +1,91 @@
+{embed="_includes/header" 
+	imageurl="{site_url}_resources/children/WWWLogoRGB-web_square.png" 
+	htmltitle="Children&rsquo;s Ministry: The Word, The Worship, The Way"}
+{embed="_includes/nav" active="children"}
+
+<div class="container mid">
+	<div id="subhead-curriculum">
+		<div class="breadcrumb">
+			You are here: &nbsp;<a href="#">Home</a> &nbsp;/ Children's Ministry
+		</div>
+		<h1 class="din">The Worship, The Word &amp; The Way</h1>
+		<ul>
+			<li><a href="{site_url}children-ministry/">Overview</a></li>
+			<li class="active"><a href="{site_url}children-ministry/curriculum/">Curriculum</a></li>
+			<li><a href="{site_url}children-ministry/verses/">Bible Memory Verse Songs</a></li>
+			<li><a href="{site_url}children-ministry/other/">Other Resources</a></li>
+			<li><a href="{site_url}children-ministry/w3_arabic/">Arabic</a></li>
+			<li><a href="{site_url}children-ministry/w3_spanish/">Spanish</a></li>
+		</ul>
+	</div>
+        
+	<div class="w585 marg-t-20">
+		<h5 class="din">Scope &amp; Sequence</h5>
+		<div>
+
+		{exp:channel:entries 
+			channel="children_year" 
+			dynamic="no" orderby="title" sort="asc" 
+			disable="member_data|pagination"
+		}
+			<ul class="scope_summary">
+				<h1>{title}</h1>
+			{associate_units}
+				{associate_units:categories}
+					{if category_id == "11"}
+						<li class="unit_header">{associate_units:title}</li>
+					{if:else}
+						<li class="head">{associate_units:title}<div>{associate_units:description}</div></li>
+						<div>
+							<li class="sub">Ages 2-5</li>
+							{associate_units:associate_lessons_2_5}
+							<li id="{associate_units:associate_lessons_2_5:url_title}">
+							  <a href="/children-ministry/lesson/{associate_units:associate_lessons_2_5:url_title}">{associate_units:associate_lessons_2_5:title}</a>
+							</li>
+							{/associate_units:associate_lessons_2_5}
+							
+						    <li class="sub">Ages 6-12</li>
+							{associate_units:associate_lessons_6_12}
+							<li id="{associate_units:associate_lessons_6_12:url_title}">
+								<a href="/children-ministry/lesson/{associate_units:associate_lessons_6_12:url_title}">
+								<?php 
+								$str = "{associate_units:associate_lessons_6_12:title}"; 
+								echo str_replace("2Lesson", "Lesson", $str); 
+								?>
+								</a>
+							</li>
+							{/associate_units:associate_lessons_6_12}
+							
+						    <li class="sub">Adaptation for Children with Disabilities</li>
+							{associate_units:associate_lessons_special}
+							<li id="{associate_units:associate_lessons_special:url_title}">
+								<a href="/children-ministry/lesson/{associate_units:associate_lessons_special:url_title}">
+								<?php
+								$str = "{associate_units:associate_lessons_special:title}";
+								echo str_replace("3Lesson", "Lesson", $str); 
+								?>
+								</a>
+							</li>
+							{/associate_units:associate_lessons_special}
+						</div>
+					{/if}
+				{/associate_units:categories}
+			{/associate_units}
+			</ul>
+		
+		{/exp:channel:entries}
+
+
+
+		</div>
+	</div>
+
+	<div id="sidebar" class="w315">
+		<br />
+		{embed="_components/themission"}
+		{embed="_components/newsletter"}
+	</div>
+    <div class="clear"></div>
+</div>
+
+{embed="_includes/footer"}

@@ -1,0 +1,69 @@
+{embed="_includes/header" 
+	imageurl="{site_url}_resources/children/WWWLogoRGB-web_square.png" 
+	htmltitle="Youth Ministry: Middle School"}
+{embed="_includes/nav" active="youth"}
+
+<div class="container mid">
+	<div id="subhead-curriculum">
+		<div class="breadcrumb">
+			You are here: &nbsp;<a href="/home">Home</a> &nbsp;/ Youth Ministries
+		</div>
+		<h1 class="din">Middle School Studies</h1>
+		<ul>
+			<li><a href="{site_url}youth-ministry/">Overview</a></li>
+			<li><a href="{site_url}youth-ministry/curriculum">Curriculum</a></li>
+			<li class="active">Middle School Studies</li>
+			<li><a href="{site_url}youth-ministry/other/">Other Resources</a></li>	
+		</ul>
+	</div>
+
+	<div class="w585 marg-t-20">
+		<h4 class="din-lrg">Middle School Curriculum</h4>
+		<p>These studies are designed to help middle school students engage with Scripture and develop the practices of prayer and Bible reading. The studies vary in length from 4 to 7 weeks. Each study consists of a leader's guide and a student book.</p>
+		<div class="clear marg-b-40"></div>
+
+		{exp:channel:entries 
+			channel="youth_lesson" category="24" 
+			dynamic="off" sort="asc" orderby="title"
+			disable="categories|member_data|pagination"
+		}
+		<div class="otherresource">
+			<h4 id="{url_title}">{title}</h4>
+			{description}
+			
+		  <p>
+			{youth_associated_document_files limit="1"}<strong>Documents:</strong><br>{/youth_associated_document_files}
+			{youth_associated_document_files}
+			<a href="{url_youth_file}{youth_associated_document_files:file_location}">{youth_associated_document_files:title}</a><br>
+			{/youth_associated_document_files}
+		  </p>
+		  
+		  <p>
+			{youth_associated_video_files limit="1"}<strong>Video:</strong><br>{/youth_associated_video_files}
+			{youth_associated_video_files}
+			<a href="{url_youth_file}{youth_associated_video_files:file_location}">{youth_associated_video_files:title}</a><br>
+			{/youth_associated_video_files}
+		  </p>
+
+		  <p>
+			{youth_associated_audio_files limit="1"}<strong>Audio:</strong><br>{/youth_associated_audio_files}
+			{youth_associated_audio_files}
+			<a href="{url_youth_file}{youth_associated_audio_files:file_location}">{youth_associated_audio_files:title}</a><br>
+			{/youth_associated_audio_files}
+		  </p>
+			
+		</div>
+		{/exp:channel:entries}
+
+	</div>
+
+	<div id="sidebar" class="w315">
+		<br />
+		{embed="_components/themission"}
+		{embed="_components/newsletter"}
+
+	</div>
+	<div class="clear"></div>
+</div>
+
+{embed="_includes/footer"}

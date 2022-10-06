@@ -1,0 +1,169 @@
+{exp:channel:entries channel="youth_unit" dynamic="on" limit="1"}
+	{embed="_includes/header" 
+		imageurl="{site_url}_resources/children/WWWLogoRGB-web_square.png" 
+		htmltitle="Youth Ministry: Unit: {title}" 
+		lesson-descrip="{description:attr_safe limit='150'}" 
+		lesson-url="{site_url}youth-ministry/unit/{url_title}/"}
+{/exp:channel:entries}
+
+{embed="_includes/nav" active="youth"}
+
+<script type="text/javascript">
+$(document).ready(function() {
+	switches = $('#switches > li');
+	slides = $('#slides > div');
+
+	switches.each(function(idx) {
+		$(this).data('slide', slides.eq(idx));
+	}).click(function() {
+		switches.removeClass('active');
+		slides.removeClass('shown');             
+		$(this).addClass('active');  
+		$(this).data('slide').addClass('shown');
+		return false;
+	});
+
+	switches2 = $('#switches-lesdis > li');
+	slides2 = $('#lesson-discussion > div');
+	switches2.each(function(idx) {
+		$(this).data('slide', slides2.eq(idx));
+	}).click(function() {
+		switches2.removeClass('active');
+		slides2.removeClass('shown');             
+		$(this).addClass('active');  
+		$(this).data('slide').addClass('shown');
+	});
+});
+
+function initMenu() {
+	$('#year-menu ul').hide();
+	$('#year-menu ul:first').show();
+	$('#year-menu:first li.unit:first span.unit').addClass("down");
+	$('#year-menu li.unit span.unit').click(function() {
+		$(this).next().slideToggle('normal');	
+		$(this).toggleClass("down");
+	});
+}
+
+$(document).ready(function() {initMenu();});
+</script>
+
+
+<div class="container mid">
+	<div id="subhead-curriculum">
+		<div class="breadcrumb">
+			You are here: &nbsp;<a href="/home">Home</a> &nbsp;/ Browse All Resources
+		</div>
+		<h1 class="din">Youth Resources</h1>
+		<ul>
+			<li><a href="/youth-ministry">Overview</a></li>
+			<li class="active"><a href="/youth-ministry/curriculum">Curriculum</a></li>
+			<li><a href="/youth-ministry/middleschool/">Middle School Studies</a></li>
+			<li><a href="/youth-ministry/other/">Other Resources</a></li>
+		</ul>
+	</div>
+
+	<div class="w705 marg-t-20">
+    {exp:channel:entries channel="youth_unit" dynamic="on" limit="1" track_views="one"}
+		<h4 class="din-lrg">{title}</h4>
+	{/exp:channel:entries}
+		<div class="sub-tab-wrap">
+			<ul id="switches-lesdis" class="sub-tabs">
+				<li class="active">Lesson</li>
+				<li style="display:none">Discussion</li>
+			</ul>
+		</div>
+		<div class="clear marg-b-20"></div>
+
+        <div class="right">
+			<div id="share">
+				<img src="{resourcewell-img}/button/share-this.png" />
+                {exp:channel:entries channel="youth_unit" dynamic="on" limit="1"}
+                <a href="https://www.facebook.com/share.php?u={url_title_path='youth-ministry/unit'}" target="_blank"><img src="{resourcewell-img}/share/facebook.png" /></a>
+                <a href="http://twitter.com/share?url={utl_title_path='youth-ministry/unit'}&text={title}"><img src="{resourcewell-img}/share/twitter.png" /></a>
+                {/exp:channel:entries}
+			</div>
+		</div>
+
+        <div id="lesson-discussion">
+		{exp:channel:entries channel="youth_unit" dynamic="on" limit="1" track_views="one"}
+			<div class="shown">
+				<div class="lesson-description">
+					{description}
+				</div>
+				<div class="shown">
+					<div class="bullets">
+					</div>
+					<div class="clear"></div>
+				</div>
+
+				<div id="lesson-detail">
+					<ul id="switches">
+                        <li class="active"><a href="#">Documents</a></li>
+						<li><a href="#">Video</a></li>
+						<li><a href="#">Audio</a></li>
+					</ul>
+
+					<div id="slides">
+						<div class="shown">
+							<div class="docs">
+								<h6>Documents</h6>
+								<p>
+								{if youth_associated_document_files}
+									{youth_associated_document_files}
+									<a href="{url_youth_file}{youth_associated_document_files:file_location}">{youth_associated_document_files:title}</a><br />
+									{/youth_associated_document_files}
+								{if:else}
+								No documents.
+								{/if}
+								</p>
+							</div>
+						</div>
+
+						<div>
+							<div class="video">
+								<h6>Video</h6>
+								<p>
+								{if youth_associated_video_files}
+									{youth_associated_video_files}
+									<a href="{url_youth_file}{youth_associated_video_files:file_location}">{youth_associated_video_files:title}</a><br />
+									{/youth_associated_video_files}
+								{if:else}
+								No Videos.
+								{/if}
+								</p>
+							</div>
+						</div>
+
+						<div>
+							<div class="audio">
+								<h6>Audio</h6>
+								<p>
+								{if youth_associated_audio_files}
+									{youth_associated_audio_files}
+									<a href="{url_youth_file}{youth_associated_audio_files:file_location}">{youth_associated_audio_files:title}</a><br />
+									{/youth_associated_audio_files}
+								{if:else}
+								No Audio.
+								{/if}
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+            <div id="discussion">
+				Discussion slide
+				<div class="clear marg-b-40"></div>
+			</div>
+
+		</div>
+		{/exp:channel:entries}
+		
+	</div>
+	<div class="clear"></div>
+</div>
+
+{embed="_includes/footer"}
+

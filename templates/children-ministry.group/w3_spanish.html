@@ -1,0 +1,70 @@
+{embed="_includes/header" 
+	imageurl="{site_url}_resources/children/WWWLogoRGB-web_square.png" 
+	htmltitle="Children&rsquo;s Ministry: Worship, Word & Way in Spanish"}
+{embed="_includes/nav" active="children"}
+
+<div class="container mid">
+	<div id="subhead-curriculum">
+		<div class="breadcrumb">
+			You are here: &nbsp;<a href="/home">Home</a> &nbsp;/ Children's Ministry
+		</div>
+		<h1 class="din">Worship, Word & Way in Spanish</h1>
+		<ul>
+			<li><a href="{site_url}children-ministry/">Overview</a></li>
+			<li><a href="{site_url}children-ministry/curriculum/">Curriculum</a></li>
+			<li><a href="{site_url}children-ministry/verses/">Bible Memory Verse Songs</a></li>
+			<li><a href="{site_url}children-ministry/other/">Other Resources</a></li>
+			<li><a href="{site_url}children-ministry/w3_arabic/">Arabic</a></li>
+			<li class="active">Spanish</li>
+		</ul>
+	</div>
+
+	<div class="w585 marg-t-20">
+		<div class="clear marg-b-40"></div>
+
+		{exp:channel:entries 
+			channel="children_lesson" category="20" 
+			dynamic="off" sort="asc" orderby="title"
+			disable="categories|member_data|pagination"
+		}
+		<div class="otherresource">
+			<h4 id="{url_title}">{title}</h4>
+			{description}
+		  
+		  <p>
+			{associated_document_files limit="1"}<strong>Documents:</strong><br>{/associated_document_files}
+			{associated_document_files}
+			<a href="{url_children_file}{associated_document_files:file_location}">{associated_document_files:title}</a><br>
+			{/associated_document_files}
+		  </p>
+		  
+		  <p>
+			{associated_video_files limit="1"}<strong>Video:</strong><br>{/associated_video_files}
+			{associated_video_files}
+			<a href="{url_children_file}{associated_video_files:file_location}">{associated_video_files:title}</a><br>
+			{/associated_video_files}
+		  </p>
+
+		  <p>
+			{associated_audio_files limit="1"}<strong>Audio:</strong><br>{/associated_audio_files}
+			{associated_audio_files}
+			<a href="{url_children_file}{associated_audio_files:file_location}">{associated_audio_files:title}</a><br>
+			{/associated_audio_files}
+		  </p>			
+			
+		</div>
+		{/exp:channel:entries}
+
+
+	</div>
+
+	<div id="sidebar" class="w315">
+		<br />
+		{embed="_components/themission"}
+		{embed="_components/newsletter"}
+
+	</div>
+	<div class="clear"></div>
+</div>
+
+{embed="_includes/footer"}

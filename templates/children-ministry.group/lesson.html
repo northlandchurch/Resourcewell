@@ -1,0 +1,257 @@
+{exp:channel:entries channel="children_lesson" dynamic="on" limit="1"}
+	{embed="_includes/header" 
+		imageurl="{site_url}_resources/children/WWWLogoRGB-web_square.png" 
+		htmltitle="Children&rsquo;s Ministry: Lesson: {title}" 
+		lesson-descrip="{description:attr_safe limit='150'}" 
+		lesson-word="{the_word}" 
+		lesson-url="{site_url}children-ministry/lesson/{url_title}/"}
+{/exp:channel:entries}
+
+{embed="_includes/nav" active="children"}
+
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+	console.log('title: ' + '{segment_3}');
+	$('#{segment_3}').addClass("active");
+	$('#year-menu > li.unit > ul > div > li:not([class])').hide();
+//	$('#year-menu > li.unit > ul > div > li.active').prevUntil('li.sub').show();
+//	$('#year-menu > li.unit > ul > div > li.active').nextUntil('li.sub').show();
+	$('#{segment_3}').parent().parent().parent().parent().show();
+	$('#{segment_3}').parent().parent().show();
+	$('#{segment_3}').prevUntil('li.sub').show();
+	$('#{segment_3}').nextUntil('li.sub').show();
+
+    switches = $('#switches > li');
+    slides = $('#slides > div');
+    switches.each(function(idx) {
+        $(this).data('slide', slides.eq(idx));
+    }).click(function() {
+        switches.removeClass('active');
+        slides.removeClass('shown');             
+        $(this).addClass('active');  
+        $(this).data('slide').addClass('shown');
+		return false;
+    });
+
+    switches2 = $('#switches-lesdis > li');
+    slides2 = $('#lesson-discussion > div');
+    switches2.each(function(idx) {
+        $(this).data('slide', slides2.eq(idx));
+    }).click(
+        function() {
+        switches2.removeClass('active');
+        slides2.removeClass('shown');             
+        $(this).addClass('active');  
+        $(this).data('slide').addClass('shown');
+	return false;
+    });
+
+
+	$('#year-menu > li.unit > ul > div > li.sub').click(function() {
+		$('#year-menu > li.unit > ul > div > li:not([class]), #year-menu > li.unit > ul > div > li.active').show();
+		$(this).nextUntil('li.sub').show();
+	});
+
+});
+
+</script>
+
+
+
+<div class="container mid">
+	<div id="subhead-curriculum">
+		<div class="breadcrumb">
+			You are here: &nbsp;<a href="#">Home</a> &nbsp;/ Children's Ministry
+		</div>
+		<h1 class="din">Children's Resources</h1>
+		<ul>
+			<li><a href="{site_url}children-ministry/">Overview</a></li>
+			<li class="active"><a href="{site_url}children-ministry/curriculum/">Curriculum</li>
+			<li><a href="{site_url}children-ministry/verses/">Bible Memory Verse Songs</a></li>
+			<li><a href="{site_url}children-ministry/other/">Other Resources</a></li>
+			<li><a href="{site_url}children-ministry/w3_arabic/">Arabic</a></li>
+			<li><a href="{site_url}children-ministry/w3_spanish/">Spanish</a></li>
+		</ul>
+	</div>
+
+
+	<div id="lesson-year" class="w195">
+	{exp:channel:entries channel="children_year" dynamic="no" orderby="title" sort="asc" disable="categories|member_data|pagination"}
+		<h1>{title}</h1>
+		<ul id="year-menu">
+		{associate_units}
+			{associate_units:categories}
+				{if category_id == "11"}
+				<li class="unit_header">{associate_units:title}</li>
+	  			{if:else}
+				<li class="unit">
+					<a class="unit" href="#">{associate_units:title}<div>{associate_units:description}</div></a>
+					<ul>
+						<div>
+							<li class="sub">Ages 2-5</li>
+							{associate_units:associate_lessons_2_5}
+							<li id="{associate_units:associate_lessons_2_5:url_title}">
+								  <a href="/children-ministry/lesson/{associate_units:associate_lessons_2_5:url_title}">{associate_units:associate_lessons_2_5:title}</a>
+							</li>
+							{/associate_units:associate_lessons_2_5}
+							
+						    <li class="sub">Ages 6-12</li>
+							{associate_units:associate_lessons_6_12}
+							<li id="{associate_units:associate_lessons_6_12:url_title}">
+								<a href="/children-ministry/lesson/{associate_units:associate_lessons_6_12:url_title}">{associate_units:associate_lessons_6_12:title:replace find='2Lesson' replace='Lesson'}</a>
+							</li>
+							{/associate_units:associate_lessons_6_12}
+							
+						    <li class="sub">Adaptation for Children with Disabilities</li>
+							{associate_units:associate_lessons_special}
+							<li id="{associate_units:associate_lessons_special:url_title}">
+								<a href="/children-ministry/lesson/{associate_units:associate_lessons_special:url_title}">{associate_units:associate_lessons_special:title:replace find='3Lesson' replace='Lesson'}</a>
+							</li>
+							{/associate_units:associate_lessons_special}
+						</div>
+					</ul>
+				</li>
+				{/if}
+			{/associate_units:categories}
+		{/associate_units}
+		</ul>
+	{/exp:channel:entries}
+	</div>
+
+
+	<div class="w705 marg-t-20">
+        {exp:channel:entries channel="children_lesson" dynamic="on" limit="1" track_views="one"}
+		<h4 class="din-lrg">
+			{exp:low_replace find="2Lesson|3Lesson|4Lesson" multiple="yes" replace="Lesson"}
+				{title}
+			{/exp:low_replace}
+		</h4>
+        {/exp:channel:entries}
+
+		<div class="sub-tab-wrap">
+			<ul id="switches-lesdis" class="sub-tabs">
+				<li class="active">Lesson</li>
+				<li style="display:none">Discussion</li>
+			</ul>
+		</div>
+		<div class="clear marg-b-20"></div>
+
+        <div class="right">
+			<div class="fullLesson" style="display:none">
+				<h6>Download Lesson</h6>
+				<p></p>
+			</div>
+			<div id="share">
+				<img src="{resourcewell-img}/button/share-this.png" />
+                {exp:channel:entries channel="children_lesson" dynamic="on" limit="1"}
+                <a href="https://www.facebook.com/share.php?u={url_title_path='children-ministry/lesson'}" target="_blank"><img src="{resourcewell-img}/share/facebook.png" /></a>
+                <a href="https://twitter.com/share?url={url_title_path='children-ministry/lesson'}&text={title}" target="_blank"><img src="{resourcewell-img}/share/twitter.png" /></a>
+                {/exp:channel:entries}
+            </div>
+        </div>
+
+
+		<div id="lesson-discussion">
+		{exp:channel:entries channel="children_lesson" dynamic="on" limit="1" track_views="one"}
+			<div class="shown">
+				<div class="lesson-description">
+					{description}
+				</div>
+				<div class="shown">
+					<div class="bullets">
+						<div>
+							<span>The Worship</span>
+							{the_worship}
+						</div>
+						<div class="alt">
+							<span>The Word</span>
+							{the_word}
+						</div>
+						<div>
+							<span>The Way</span>
+							{the_way}
+						</div>
+					</div>
+					<div class="clear"></div>
+				</div>
+
+				<div id="lesson-detail">
+					<ul id="switches">
+                        <li class="active"><a href="#">Documents</a></li>
+						<li><a href="#">Video</a></li>
+						<li><a href="#">Audio</a></li>
+					</ul>
+
+					<div id="slides">
+						<div class="shown">
+							<div class="docs">
+								<h6>Documents</h6>
+								<p>
+								{if associated_document_files}
+									{associated_document_files}
+									<?php
+										$val = "{associated_document_files:title}"; 
+										preg_match_all('/-[0-9]+/',$val,$title); 
+									?>
+									<a href="{url_children_file}{associated_document_files:file_location}">{exp:low_replace find="{filenaming}" case="yes" multiple="yes"}{associated_document_files:title}{/exp:low_replace}  <?php if(!empty($title[0])) { echo "(Ages" . substr($title[0][0],1) . $title[0][1]. ")"; } ?></a><br />
+									{/associated_document_files}
+								{if:else}
+								No documents.
+								{/if}
+								</p>
+							</div>
+						</div>
+
+						<div>
+							<div class="video">
+								<h6>Video</h6>
+								<p>
+								{if associated_video_files}
+									{associated_video_files}
+									<a href="https://{associated_video_files:file_remotely_hosted}" target="_blank">{exp:low_replace find="{filenaming}" case="yes" multiple="yes"}{associated_video_files:title}{/exp:low_replace}</a><br />
+									{/associated_video_files}
+								{if:else}
+								No videos.
+								{/if}
+								</p>
+							</div>
+						</div>
+
+						<div>
+							<div class="audio">
+								<h6>Audio</h6>
+								<p>
+								{if associated_audio_files}
+									{associated_audio_files}
+									<?php
+										$val = "{associated_audio_files:title}"; 
+										preg_match_all('/-[0-9]+/',$val,$title); 
+									?>
+									<a href="{url_children_file}{associated_audio_files:file_location}">{exp:low_replace find="{filenaming}" case="yes" multiple="yes"}{associated_audio_files:title}{/exp:low_replace} (Ages <?php echo substr($title[0][0],1).$title[0][1]; ?>)</a><br />
+									{/associated_audio_files}
+								{if:else}
+								No audio.
+								{/if}
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+            <div id="discussion">
+				Discussion slides
+				<div class="clear marg-b-40"></div>
+            </div>
+		
+		{/exp:channel:entries}			
+		</div>
+	</div>
+	<div class="clear"></div>
+</div>
+
+
+{embed="_includes/footer"}

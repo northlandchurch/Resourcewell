@@ -1,0 +1,88 @@
+{exp:channel:entries channel="rw_blog" dynamic="on" limit="1"}
+{embed="_includes/header" htmltitle="The Resource Well Blog: {title}"}
+{embed="_includes/nav" active="blog"}
+
+<div class="container mid">
+	<div id="subhead-curriculum" class="blog">
+		<div class="breadcrumb">
+			You are here: &nbsp;<a href="{site_url}">Home</a> &nbsp;/ <a href="{site_url}blog">Blog</a> &nbsp;/ {title}
+            {/exp:channel:entries}
+		</div>
+		<h1 class="din">The Resource Well Blog</h1>
+	</div>
+
+	<div id="blogs" class="w585 marg-t-20">
+        {exp:channel:entries channel="rw_blog" dynamic="on" limit="1"}
+        <div class="entry">
+    		<h4 class="din-lrg">{title}</h4>
+    		<div class="info">
+    		    <span class="script">by</span> <strong><a href="{staff_bio_link}">{author}</a></strong> &nbsp;|&nbsp; {entry_date format="%F %j, %Y"}
+    		    <div class="commentcount">
+    		        {if comment_total == '0'}No Comments, <a href="#newcomment">be the first!</a>{/if}
+    		        {if comment_total == '1'}<a href="#comments">1 Comment</a>{/if}
+    		        {if comment_total > '1'}<a href="#comments">{comment_total} Comments</a>{/if}
+    		    </div>
+    		</div>
+    		{description}
+        </div>
+        {/exp:channel:entries}
+
+        <div id="comments">
+            <h4>Comments</h4>
+            {exp:comment:entries sort="asc"}
+            {if no_results}<div class="nocomments">No one has commented yet. Be the first!</div>{/if}
+            <div class="comment">
+                <div class="author">
+                	<strong>{name}</strong> said<br />
+                	<span>(on {comment_date format="%F %j, %Y"})</span>
+                </div>
+                <div class="said">
+                	{comment}
+                </div>
+            </div>
+            {/exp:comment:entries}
+            <div class="clear"></div>
+
+            <div id="newcomment">
+            	<h4 id="addacomment" class="bord-b marg-b-20">Add a Comment</h4>
+                {exp:comment:form channel="rw_blog"}
+            	{if logged_out}
+                <p>
+            		<input type="text" name="name" size="50" />
+            		<label for="name"><strong>Name:</strong> <span class="required">*This field is required.</span></label>
+            	</p>
+            	<p>
+            		<input type="text" name="email" size="50" />
+            		<label for="email"><strong>Email:</strong> <span class="required">*This field is required.</span></label>
+                </p>
+            	{/if}
+            	<textarea name="comment" cols="70" rows="10">{comment}</textarea>
+            	<p>
+            		<input type="checkbox" name="save_info" value="yes" {save_info} /> Remember my personal information<br />
+            		<input type="checkbox" name="notify_me" value="yes" {notify_me} /> Notify me of follow-up comments?
+            	</p>
+            	<input type="submit" name="submit" value="Submit" />
+            	{/exp:comment:form}
+            </div>
+        </div>
+		<div class="clear marg-b-40"></div>
+	</div>
+
+	<div id="sidebar" class="w315">
+		<h3>Blog Categories</h3>
+        {exp:channel:categories channel="rw_blog" category_group="3" show_empty="no"}
+        <span class="din">{count}</span> <a href="{path='blog/'}">{category_name}</a>
+        {/exp:channel:categories}
+
+		<p><a href="{site_url}/blog" class="grey-button"><span class="din">VIEW ALL ENTRIES</span></a></p>
+		<div class="divider"></div>
+
+        {embed="_components/rsscta"}
+        {embed="_components/themission"}
+        {embed="_components/newsletter"}
+
+	</div>
+    <div class="clear"></div>
+</div>
+
+{embed="_includes/footer"}

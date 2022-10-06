@@ -1,0 +1,121 @@
+{embed="_includes/header" 
+	imageurl="{site_url}_resources/children/WWWLogoRGB-web_square.png" 
+	htmltitle="Children&rsquo;s Ministry: Bible Memory Verses"}
+{embed="_includes/nav" active="children"}
+
+<div class="container mid">
+	<div id="subhead-curriculum">
+		<div class="breadcrumb">
+			You are here: &nbsp;<a href="#">Home</a> &nbsp;/ Children's Ministry
+		</div>
+		<h1 class="din">Bible Memory Verse Songs</h1>
+		<ul>
+			<li><a href="{site_url}children-ministry/">Overview</a></li>
+			<li><a href="{site_url}children-ministry/curriculum/">Curriculum</a></li>
+			<li class="active">Bible Memory Verse Songs</li>
+			<li><a href="{site_url}children-ministry/other/">Other Resources</a></li>
+			<li><a href="{site_url}children-ministry/w3_arabic/">Arabic</a></li>
+			<li><a href="{site_url}children-ministry/w3_spanish/">Spanish</a></li>
+		</ul>
+	</div>
+        
+	<div class="w585 marg-t-20">
+		<p>These original Bible Memory Verse Songs help children write God’s Word on their hearts forever. Songs, accompaniment tracks, sheet music, and music videos are available for free download and are featured in each unit of The Worship, The Word & The Way curriculum.</p>
+		<div class="clear marg-b-40"></div>
+
+		<h5 class="din"><a href="/_assets/pdf/BibleMemoryVerseSongList.pdf" alt="Download Song List" target="_blank">Download Song List</a></h5><img src="/_assets/img/icon/downloadable.png">
+		<br>
+		<h5 class="din"><a href="/children-ministry/all_verses" alt="View all lessons">View all songs</a></h5> <img src="/_assets/img/icon/link.png">
+
+
+
+		<div class="sub-tab-wrap">
+			<ul class="sub-tabs">
+			{exp:channel:entries channel="children_year" dynamic="no" orderby="title" sort="asc" disable="member_data|pagination"}
+				<li class="{if count == '2'}active{/if}">{title}</li>
+			{/exp:channel:entries}
+			</ul>
+		</div>
+
+
+		<div id="scopes">
+
+{exp:channel:entries channel="children_year" dynamic="no" orderby="title" sort="asc" 	disable="categories|member_data|pagination"}
+	{if count == '2'}
+	<ul class="scope shown">
+	{if:else}
+	<ul class="scope">
+	{/if}
+	{associate_units}
+		{associate_units:categories}
+			{if category_id == "11"}
+			<li class="unit_header">{associate_units:title}</li>
+	  		{if:else}
+	  		<li class="head">{associate_units:title}<div>{associate_units:description}</div></li>
+			<div>
+				{associate_units:associate_lessons_verse_songs}
+				<li><a href="/children-ministry/view-verse/{associate_units:associate_lessons_verse_songs:entry_id}">{associate_units:associate_lessons_verse_songs:title}</a></li>
+				{/associate_units:associate_lessons_verse_songs}
+			</div>
+			{/if}
+		{/associate_units:categories}
+	
+	{/associate_units}
+	</ul>
+{/exp:channel:entries}
+
+		</div>
+
+	</div>
+
+	<div id="sidebar" class="w315">
+	<br />
+	{embed="_components/themission"}
+	{embed="_components/newsletter"}
+	</div>
+    <div class="clear"></div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+	switches = $('ul.sub-tabs > li');
+	slides = $('#scopes > ul.scope');
+	switches.each(function(idx) {
+		$(this).data('slide', slides.eq(idx));
+	}).click(function() {
+		console.log("tab selected: ");
+		switches.removeClass('active');
+		slides.removeClass('shown');             
+		$(this).addClass('active');  
+		$(this).data('slide').addClass('shown');
+
+		$('#scopes > ul.scope > div').hide();
+		$('ul.scope[class="scope shown"] > li[class="head"]:first').nextUntil('li.head').show();
+		$('#scopes > ul.scope > div > li:not([class])').hide();
+		//$('#scopes > ul.shown > div > li[class="sub"]:first').nextUntil('li.head, li.sub').show();
+		$('ul.scope[class="scope shown"] > li[class="head"]:first').next('div').children('li').show();
+	});
+
+	$('#scopes > ul.scope > div').hide();
+	$('ul.scope[class="scope shown"] > li[class="head"]:first').nextUntil('li.head').show();
+
+	$('#scopes > ul.scope > li.head').click(function (){
+		console.log("Unit clicked");
+		$('#scopes > ul.scope > div').hide();    
+		$('#scopes > ul.scope > div > li:not([class])').hide();
+
+		$(this).nextUntil('#scopes > ul.scope > li.head').show();
+		$(this).next('div').children('li').show();
+	});
+
+	$('ul.scope li a').click(function (){
+		$.get($(this).attr('href'),function(data) {
+			create(data);
+		});
+		return false;
+	});
+});
+</script>
+
+
+{embed="_includes/footer"}

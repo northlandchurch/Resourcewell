@@ -1,0 +1,52 @@
+{exp:channel:entries 
+	channel="children_lesson" entry_id="{segment_3}" 
+	dynamic="no"
+	disable="categories|member_data|pagination"
+}
+<div id="verse-wrapper">
+	<h1>{title}</h1>
+
+	<div class="docs">
+        <h6>Documents</h6>
+		{if associated_document_files}
+			{associated_document_files}
+			<?php
+				$val = "{associated_document_files:title}"; 
+				preg_match_all('/-[0-9]+/',$val,$title); 
+			?>
+			<a href="{url_children_file}{associated_document_files:file_location}">{exp:low_replace find="{filenaming-song}" case="yes" multiple="yes"}{associated_document_files:title}{/exp:low_replace} (Ages <?php echo substr($title[0][0],1).$title[0][1]; ?>)</a><br />
+			{/associated_document_files}
+		{if:else}
+			No documents.
+		{/if}
+	</div>
+
+	
+	<div class="video">
+        <h6>Video</h6>
+		{if associated_video_files}
+			{associated_video_files}
+				<a href="//{associated_video_files:file_remotely_hosted}">{exp:low_replace find="{filenaming-song}" case="yes" multiple="yes"}{associated_video_files:title}{/exp:low_replace}</a><br />
+			{/associated_video_files}
+		{if:else}
+			No videos.
+		{/if}
+	</div>
+
+
+	<div class="audio">
+        <h6>Audio</h6>
+		{if associated_audio_files}
+			{associated_audio_files}
+			<?php
+				$val = "{associated_document_files:title}"; 
+				preg_match_all('/-[0-9]+/',$val,$title); 
+			?>
+			<a href="{url_children_file}{associated_audio_files:file_location}">{exp:low_replace find="{filenaming-song}" case="yes" multiple="yes"}{associated_audio_files:title}{/exp:low_replace} (Ages <?php echo substr($title[0][0],1).$title[0][1]; ?>)</a><br />
+			{/associated_audio_files}
+		{if:else}
+			No audio.
+		{/if}
+	</div>
+</div>
+{/exp:channel:entries}

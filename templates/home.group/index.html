@@ -1,0 +1,107 @@
+{embed="_includes/header" 
+	htmltitle="Welcome!"
+	imageurl="{site_url}_resources/children/WWWLogoRGB-web_square.png" 
+	lesson-descrip="Home of Worship, Word & Way curriculum for children and youth.<br>
+				Look around.<br>
+				Download lessons, media resources, training videos, and more.<br>
+				It's all free. We're glad you're here." 
+	lesson-url="{site_url}"}
+	
+{embed="_includes/nav" active=""}
+
+<div id="welcome" class="container">
+    <div class="slider">
+        <div id="slide01" class="slide">
+            <div class="right">
+                <iframe src="https://player.vimeo.com/video/26965652?title=0&amp;byline=0&amp;portrait=0" width="500" height="281" frameborder="0" style="display:none"></iframe>	
+				<img src="/_resources/children/otherresources/iStock-140396765_Boy_Bible.jpg" alt="Resource Well" width="500" height="281" style="display:block">	
+            </div>
+
+            <h1>
+				Home of Worship, Word & Way curriculum for children and youth. 
+				Look around. 
+				Download lessons, media resources, training videos, and more. 
+				It's all free. We're glad you're here
+			</h1>
+		    <br><br>
+            <a href="/about/"><img src="{resourcewell-img}/button/learn-more.png" class="marg-r-20" /></a>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+
+<div class="container mid">
+
+<div id="featured" class="marg-b-40">
+	<div class="header">FEATURED LESSONS <span class="amp">&amp;</span> RESOURCES </div>
+
+	{exp:channel:entries channel="blog|children_lesson|youth_lesson" sticky="no" search:featured_order='>0' orderby="featured_order" sort="asc" limit="4"}
+		<div class="grid_3">
+
+			<h4 class="featured">
+			{if channel_id == '7'}
+				<a href="{site_url}children-ministry/lesson/{url_title}">{exp:low_replace find="2Lesson|3Lesson" replace="Lesson" multiple="yes"}{title}{/exp:low_replace}</a>
+			{if:elseif channel_id == '11'}
+				<a href="{site_url}youth-ministry/lesson/{url_title}">{title}</a>
+			{/if}
+			</h4>
+
+			<div class="contains">
+				<div class="head"> 
+				{if associated_document_files OR associated_audio_files OR associated_video_files}
+				Contains: 
+				{/if}
+				{if associated_document_files}
+					<img src="{resourcewell-img}/icon/pdf.png" />
+				{/if}
+				{if associated_audio_files}
+					<img src="{resourcewell-img}/icon/audio.png" />
+				{/if}
+				{if associated_video_files}
+					<img src="{resourcewell-img}/icon/movie.png" />
+				{/if}
+				</div>
+				<p>
+				{if description != ""}
+					{description:attr_safe limit='150'}
+				{if:else}
+					{the_word}
+				{/if}
+				</p>
+				<div class="category_view">
+				{if channel_id == '7'}
+					Children's Ministry
+				{if:elseif channel_id == '11'}
+					Youth Ministry
+				{/if}
+				</div>
+			</div>
+		</div>
+	{/exp:channel:entries}
+	<div class="clear"></div>
+    </div>
+
+    <div class="grid_10">
+        <h3>Latest Blog Posts</h3>
+
+		{exp:channel:entries channel="rw_blog" orderby="entry_date" sort="desc" limit="2"}
+		<div class="links">
+    		<h4 class="links"><a href="{exp:low_replace find="index.php/"}{url_title_path='blog/entry'}{/exp:low_replace}">{title}</a></h4>
+			<div class="info">
+				<span class="script">by</span> <strong><a href="#" target="_blank">{author}</a></strong> &nbsp;|&nbsp; {entry_date format="%F %j, %Y"}
+    		</div>
+            {description}
+		</div>
+		{/exp:channel:entries}
+	</div>
+	
+	<div class="grid_4">
+	{embed="_components/themission" margin="marg-b-20"}
+	{embed="_components/newsletter"}
+	</div>
+
+	<div class="clear"></div>
+
+</div>
+
+{embed="_includes/footer"}

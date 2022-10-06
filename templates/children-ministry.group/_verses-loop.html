@@ -1,0 +1,15 @@
+{associate_units}
+	{associate_units:categories}
+		{if category_id == "11"}
+		<li class="unit_header">{associate_units:title}</li>
+		{if:else}
+		<li class="head">{associate_units:title}<div>{associate_units:description}</div></li>
+		<div>
+			{associate_units:associate_lessons_verse_songs}
+			<li><a href="/children-ministry/view-verse/{associate_units:associate_lessons_verse_songs:entry_id}">{associate_units:associate_lessons_verse_songs:title}</a></li>
+			{/associate_units:associate_lessons_verse_songs}
+		</div>
+		{/if}
+	{/associate_units:categories}
+{/associate_units}
+			

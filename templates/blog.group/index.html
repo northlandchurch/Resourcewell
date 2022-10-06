@@ -1,0 +1,52 @@
+{embed="_includes/header" htmltitle="The Resource Well Blog"}
+{embed="_includes/nav" active="blog"}
+
+<div class="container mid">
+	<div id="subhead-curriculum" class="blog">
+		<div class="breadcrumb">
+			You are here: &nbsp;<a href="{site_url}">Home</a> &nbsp;/ Blog
+		</div>
+		<h1 class="din">The Resource Well Blog</h1>
+	</div>
+
+	<div id="blogs" class="w585 marg-t-20">
+        {exp:channel:entries channel="rw_blog"}
+        <div class="entry">
+    		<h4 class="din-lrg"><a href="{url_title_path='blog/entry'}">{title}</a></h4>
+    		<div class="info">
+    		    <span class="script">by</span> <strong> <a href="{staff_bio_link}">{author}</a></strong> &nbsp;|&nbsp; {entry_date format="%F %j, %Y"}
+    		    <div class="commentcount">
+    		        {if comment_total == '0'}No Comments{/if}
+                    {if comment_total == '1'}<a href="{url_title_path='blog/entry'}#comments">1 Comment</a>{/if}
+                    {if comment_total > '1'}<a href="{url_title_path='blog/entry'}#comments">{comment_total} Comments</a>{/if}
+    		    </div>
+    		</div>
+    		<?php 
+            ee()->load->helper('text');
+            $end_char = '...<br><a href="{url_title_path=\'blog/entry\'}">Read more</a>';
+            $desc = word_limiter ('{description}', 50, $end_char);
+            echo $desc;
+            ?>
+        </div>
+        {/exp:channel:entries}
+		<div class="clear marg-b-40"></div>
+	</div>
+
+	<div id="sidebar" class="w315">
+		<h3>Blog Categories</h3>
+        {exp:channel:categories channel="rw_blog" category_group="3" show_empty="yes"}
+        <span class="din">{count}</span> <a href="{path='blog/'}">{category_name}</a>
+        {/exp:channel:categories}
+
+		<p><a href="{site_url}blog" class="grey-button"><span class="din">VIEW ALL ENTRIES</span></a></p>
+		<div class="divider"></div>
+
+{!--        {embed="_components/rsscta"}	--}
+        {embed="_components/themission"}
+        {embed="_components/newsletter"}
+
+	</div>
+    <div class="clear"></div>
+</div>
+
+{embed="_includes/footer"}

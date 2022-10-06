@@ -1,0 +1,41 @@
+{embed="_includes/header" 
+	imageurl="{site_url}/_resources/children/WWWLogoRGB-web_square.png" 
+	htmltitle="Youth Ministry"}
+{embed="_includes/nav" active="youth"}
+
+<div id="hero" class="container">
+    <div class="slider">
+        <div id="slide01" class="slide">
+            <div class="right">
+                <iframe src="https://player.vimeo.com/video/26811685?title=0&amp;byline=0&amp;portrait=0" width="500" height="281" frameborder="0"></iframe>
+            </div>
+
+		<p>ALL MATERIALS ARE FREE! Our hope is to help students develop a stronger relationship with Christ as they make their faith their own. Adapt these materials in any way that is helpful for your family or ministry. It is our prayer that these studies will facilitate the development of healthy spiritual habits, as students read the Bible and see that it is applicable to their personal lives.</p><p>For some tips on how to get started, click on one of the following topics: &nbsp;&nbsp;<a href="/_resources/children/Tips_for_Getting_Started_at_Church_in_Your_Home.pdf" style="color:white">Church in Your Home</a> &nbsp;&nbsp;<a href="/_resources/children/Tips_for_Getting_Started_at_Sunday_School_.pdf "style="color:white">Sunday School</a> &nbsp;&nbsp;<a href="/_resources/children/Tips_for_Getting_Started_at_Camp.pdf" style="color:white">Camp</a> &nbsp;&nbsp;<a href="/_resources/children/Tips_for_Getting_Started_at_School.pdf" style="color:white">School</a></p>
+ 	</div>
+        <div class="clear"></div>
+    </div>
+</div>
+
+<div class="container mid">
+	<div class="w585 marg-t-20">
+	{exp:channel:categories channel="youth_year" style="linear" category_group="7"}
+		<div class="w250 marg-b-40">
+			<h4 class="din"><a href="{youth_category_link}">{category_name}</a></h4>
+			{if category_description}<p>{category_description}</p>{/if}
+		</div>
+		<?php
+			if ({count} % 2 == 0) {
+				echo "<div class='clear'>{count}</div>";
+			}
+		?>
+	{/exp:channel:categories}
+	</div>
+
+	<div id="sidebar" class="w315">
+		<br />
+	        {embed="_components/themission"}
+	</div>
+    <div class="clear"></div>
+</div>
+
+{embed="_includes/footer"}

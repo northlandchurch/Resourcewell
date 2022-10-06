@@ -1,0 +1,21 @@
+{exp:channel:entries channel="about" entry_id="6554"}
+	{embed="_includes/header" htmltitle="{title}"}
+	{embed="_includes/nav" active="browse"}
+
+<div class="container mid">
+	<div class="subhead">
+		<div class="breadcrumb">
+			You are here: &nbsp;<a href="{site_url}">Home</a> / {title}
+		</div>
+		<h1 class="din">{title}</h1>
+	</div>
+
+	<div id="documents">
+		{page_content}
+	</div>
+
+	<div class="clear"></div>
+</div>
+{/exp:channel:entries}
+
+{embed="_includes/footer"}

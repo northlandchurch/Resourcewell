@@ -1,0 +1,98 @@
+{embed="_includes/header" htmltitle="Search all Resources"}
+{embed="_includes/nav" active="browse"}
+
+<?php
+	$sections = array('audio','video','documents','children','youth');
+	$segment = "{segment_2}";
+	$url = "{site_url}search/";
+
+	if(in_array($segment,$sections))
+	{
+		$url .= $segment.'/tags/';
+	}
+	else
+	{
+		$url .='tags/';
+	}
+?>
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+
+	console.log("Current URL: " + "<?php echo $url; ?>");
+
+	$('div.result > h4').each(function (){
+		switch($(this).attr('class'))
+		{
+			case "docx":
+			case "doc":
+			case "pdf":
+				$(this).addClass('pdf');
+				break;
+			case "mov":
+			case "avi":
+				$(this).addClass('movie');
+				break;
+			case "mp3":
+			case "wav":
+				$(this).addClass('audio');
+				break;
+			default:
+			//	  $(this).addClass('pdf');
+				break;
+		}
+	});
+	
+	// Triggered when 'Search' button clicked or "Enter" pressed
+	$('form').submit(function (evt) {
+		console.log("Form2 submitted");
+		console.log("Keywords: ", $("#keywords").val());
+	});
+	
+});
+
+</script>
+
+<div class="container mid">
+	<div class="subhead">
+		<div class="breadcrumb">
+			You are here: &nbsp;<a href="/home">Home</a> &nbsp;/ Search All Resources
+		</div>
+		<h1 class="din">Search all Resources</h1>
+	</div>
+
+
+	<div class="w170 filter">
+		<div class="section-down">Search</div>
+		<div class="search-bar">
+		{exp:search:simple_form channel="youth_unit|children_lesson|youth_lesson|children_file|youth_file" search_in="entries" result_page="search/results" no_result_page="search/noresult"}
+			<input type="text" name="keywords" id="keywords" value="" size="18" maxlength="100" placeholder="Search">
+		{/exp:search:simple_form}
+			<p>e.g. Daniel, relationships, song</p>
+		</div>
+	</div>
+
+
+	<div class="w710 results">
+		<div class="result">
+		Hello Children's Leaders!<br /> <br />
+
+		We are working on improving our search engine. If you are unable to find something, please use our <a href="contact/">contact page</a> to let us know. We will respond quickly. Thank you! <br /><br />
+
+		Worship, Word & Way Team 	
+		</div>
+
+		<div class="result" id="noresult">
+			<h5>Sorry, there are no results for <span id="searchterm" style="color: #0e5468;" >{exp:search:keywords} {exp:search:keywords} {/exp:search:keywords}</span></h5>
+		</div> 
+
+	    <input style="display:none" id="hidden-input" />
+
+		<div class="clear"></div>
+	</div>
+
+	<div class="clear"></div>
+</div>
+
+{embed="_includes/footer"}

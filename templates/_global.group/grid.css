@@ -1,0 +1,84 @@
+/* 
+    Document    : grid.css
+    Created on  : Jul 9, 2010
+    Author      : Aaron Martin  <aaronm@purplerockscissors.com>
+    Description : Custom grid structure for Resource Well.
+*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {margin: 0;padding: 0;border: 0;outline: 0;font-size: 100%;vertical-align: baseline;background: transparent;}
+body {line-height: 1;}
+ol, ul {list-style: none;}
+blockquote, q {quotes: none;}
+blockquote:before, blockquote:after,q:before, q:after {content: '';content: none;}
+:focus {outline: 0;}
+ins {text-decoration: none;}
+del {text-decoration: line-through;}
+table {border-collapse: collapse;border-spacing: 0;}
+
+/* http://sonspring.com/journal/clearing-floats */
+.clear {clear: both;display: block;overflow: hidden;visibility: hidden;width: 0;height: 0;}
+.clearfix:after {clear: both;content: ' ';display: block;font-size: 0;line-height: 0;visibility: hidden;width: 0;height: 0;}
+* html .clearfix,*:first-child+html .clearfix {zoom: 1;}
+
+.container {
+    background-color: transparent;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 2px;
+    padding-right: 2px;
+    text-align: left;
+    width: 960px;
+    }
+
+.grid_full,
+.grid_3,
+.grid_4,
+.grid_7,
+.grid_8,
+.grid_10,
+.w170,
+.w250,
+.w585,
+.w705,
+.w710 {
+    display: inline;
+    float: left;
+    margin-left: 20px;
+    margin-right: 20px;
+    position: relative;
+    }
+
+.w195 {
+    display: inline;
+    float: left;
+    margin-left: 0px;
+    margin-right: 20px;
+    position: relative;
+    }
+
+.w315 {
+    display: inline;
+    float: left;
+    margin-left: 20px;
+    margin-right: 0px;
+    position: relative;
+    }
+
+.alpha { margin-left: 0; }
+.omega { margin-right: 0; }
+
+
+.container .grid_full { width: 920px; }
+.container .grid_3 { width: 200px; }
+.container .grid_4 { width: 280px; }
+.container .grid_7 { width: 440px; }
+.container .grid_8 { width: 500px; }
+.container .grid_10 {width: 600px; }
+
+.container .w170 { width: 170px; }
+.container .w195 { width: 195px; }
+.container .w250 { width: 250px; }
+.container .w315 { width: 315px; }
+.container .w585 { width: 585px; }
+.container .w705 { width: 705px; }
+.container .w710 { width: 710px; }

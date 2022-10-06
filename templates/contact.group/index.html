@@ -1,0 +1,54 @@
+{embed="_includes/header" htmltitle="Children&rsquo;s Ministry: The Word, The Worship, The Way"}
+{embed="_includes/nav" active="contact"}
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+  $('input[name^="recipient_email"]').click(function(){
+    var status = $(this).attr('checked');
+    var field_val = $(this).val();
+
+    $('span:contains('+field_val+')').prev().attr('checked',status);
+  });
+});
+</script>
+
+<div class="container mid">
+	<div class="w585 marg-t-20">
+<!--	
+	    <h4 class="din-lrg">Get in touch with Resource Well</h4>
+        <p>Thanks for coming to Resource Well! If you have questions, comments, suggestions or encouragements we would love to hear from you.</p>
+		<div class="clear marg-b-40"></div>
+-->
+
+		<div id="wufoo-p1p7dsdy0b0nb53">
+		Fill out my <a href="https://northlandchurch.wufoo.com/forms/p1p7dsdy0b0nb53">online form</a>.
+		</div>
+		<script type="text/javascript">var p1p7dsdy0b0nb53;(function(d, t) {
+		var s = d.createElement(t), options = {
+			'userName':'northlandchurch',
+			'formHash':'p1p7dsdy0b0nb53',
+			'autoResize':true,
+			'height':'637',
+			'async':true,
+			'host':'wufoo.com',
+			'header':'show',
+			'ssl':true};
+			s.src = ('https:' == d.location.protocol ? 'https://' : 'http://') + 'www.wufoo.com/scripts/embed/form.js';
+			s.onload = s.onreadystatechange = function() {
+			var rs = this.readyState; if (rs) if (rs != 'complete') if (rs != 'loaded') return;
+			try { p1p7dsdy0b0nb53 = new WufooForm();p1p7dsdy0b0nb53.initialize(options);p1p7dsdy0b0nb53.display(); } catch (e) {}};
+			var scr = d.getElementsByTagName(t)[0], par = scr.parentNode; par.insertBefore(s, scr);
+		})(document, 'script');</script>
+
+	</div>
+
+	<div id="sidebar" class="w315">
+		<div class="clear marg-b-20"></div>
+        {embed="_components/themission"}
+        {embed="_components/newsletter"}
+	</div>
+    <div class="clear"></div>
+</div>
+
+{embed="_includes/footer"}
